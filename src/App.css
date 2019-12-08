@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'bio-sans';
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #fff;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  /* width: 30%; */
+}
+
+.header {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  /* background: #fff; */
+}
+
+.logo {
+  width: 155px;
+}
+
+.logo-sub-txt {
+  font-size: 0.7rem;
+  letter-spacing: 7px;
+  line-height: 6px;
+}
+
+.vertical {
+    padding: 7.5rem 0;
+    height: 100vh;
+    margin: 0 2rem;
+}
+
+.vertical ul {
+    text-align: left;
+}
+.vertical ul:first-child li {
+    padding: .4rem 0;
+    display: flex;
+    align-items: center;
+    border-left: solid 1px #000;
+}
+/* 
+.info-toggle-list {
+    column-count: 2;
+} */
+
+.info-toggle-list li {
+    border-left: none;
+    padding: .2rem 0;
+}
+
+.vertical ul li.active {
+    border-left: solid 1px #fff;
+}
+
+.horizontal {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.horizontal ul {
+    display: flex;
+    padding: 0 2rem;
+}
+
+nav ul li {
+  display: block;
+  padding: 0 0.4rem;
+}
+
+nav ul li a {
+  color: #000;
+  font-size: 0.8rem;
+  text-decoration: none;
+  padding: 0 .4rem;
+  transition: .22s ease-in-out;
+  position: relative;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+/* .horizontal .active:after {
+    content: "";
+    height: 4px;
+    width: 4px;
+    display: block;
+    margin: 0px auto;
+    background: #000;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+} */
+
+.vertical {
+    position: fixed;
+    z-index: 1;
+}
+
+footer {
+    position: fixed;
+    z-index: 1;
+}
+
+@media(max-width: 992px) {
+    .vertical {
+        display: none;
+    }
+}
+
+@media(min-width: 1400px) {
+    .container > div {
+        height: 100vh;
+        overflow: hidden;
+    }    
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+.back-to-top a {
+    text-decoration: none;
+    color:#fff;
+    font-size: .7rem;
+    position: relative;
+}
+
+.back-to-top i {
+    padding: .0 .2rem;
+}
+
+.info-toggle-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.fas {
+    font-size:.6rem;
+}
