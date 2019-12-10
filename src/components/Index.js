@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from "react";
 import About from "./About";
 import Header from './Header';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import BackToTop from './BackToTop';
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -11,11 +14,47 @@ export class Index extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    this.state = {
+      active: true
+    }
   }
   componentDidMount() {
     console.log("//-----------ComponentDidMount Ran");
     AOS.init();
     console.log('AOS Init');
+    let scrollpos = window.scrollY;
+    const list = document.querySelector(".photo-list");
+    
+    const listItem = document.querySelector(".photo-list li");
+
+    function add_class_on_scroll() {
+      list.classList.add("active");
+    }
+
+    function remove_class_on_scroll() {
+      list.classList.remove("active");
+    }
+
+    // window.addEventListener("scroll", function() {
+    //   //Here you forgot to update the value
+    //   scrollpos = window.scrollY;
+
+    //   if (scrollpos > 10) {
+    //     add_class_on_scroll();
+    //   } else {
+    //     remove_class_on_scroll();
+    //   }
+    // });
+  }
+
+  handleClick = e => {
+    e.preventDefault();
+    this.setState({ active: true });
+    const active = document.querySelector('.active');
+    if(active){
+      active.classList.remove('active');
+    }
+    e.currentTarget.parentNode.classList.add('active');
   }
 
   componentDidCatch() {
@@ -25,60 +64,25 @@ export class Index extends Component {
   render() {
     return (
       <Fragment>
-        <header className="header">
-          <Header />                  
-        </header>
-
-        <nav className="vertical" data-aos="fade-right" data-aos-delay="600">
-           <ul>
-               <li><a className="nav-link" href="#">Bonita Misty Morning</a></li>
-               <li><a className="nav-link" href="#">Bonita Early Morning</a></li>
-               <li><a className="nav-link disabled" href="#">Bonita Sun</a></li>
-               <li><a className="nav-link disabled" href="#">Bonita Reflection</a></li>
-               <li><a className="nav-link disabled" href="#">Bonita Trolly</a></li>
-               <li><a className="nav-link disabled" href="#">Bonita Bridge</a></li>
-               <li><a className="nav-link disabled" href="#">Bonita Wonder</a></li>
-               <li><a className="nav-link disabled" href="#">Bonita Thoughts</a></li>
-               <li><a className="nav-link disabled" href="#">DJ Tech Set</a></li>
-               <li><a className="nav-link disabled" href="#">DJ Tech Set II</a></li>
-               <li className="active"><a className="nav-link disabled" href="#">DJ Tech Set III</a></li>
-               <li><a className="nav-link disabled" href="#">Loft Couple</a></li>
-           </ul>
-           <ul className="info-toggle-list">
-               <li><a href=""><i className="fas fa-info-circle"></i></a></li>
-               <li><a href=""><i className="fas fa-comments"></i></a></li>
-               <li><a href=""><i className="fas fa-share-alt"></i></a></li>
-               <li><a href=""><i className="fas fa-download"></i></a></li>
-           </ul>
-          </nav>
-          
-        <nav className="nav-right horizontal">
-           <ul>
-               <li><Link className="nav-link active" to="/">Home</Link></li>
-               <li><Link className="nav-link" to="/about">Archives</Link></li>
-               <li><Link className="nav-link disabled" to="#">Speaking</Link></li>
-               <li><Link className="nav-link disabled" to="#">RSS Feed</Link></li>
-           </ul>
-          </nav>
+          <Header />
+            <Sidebar active={this.state.active} handleClick={this.handleClick} />
         <div className="container">
-          <div><img src="/img/bonitaskies.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitaskies2.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitasun.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitasunreflection.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitatrolly.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitabridge1.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitabridge.jpg" /></div>
-          <div data-aos="fade"><img src="/img/bonitaclose.jpg" /></div>
-          <div data-aos="fade"><img src="/img/djtech.jpg" /></div>
-          <div data-aos="fade"><img src="/img/djtech2.jpg" /></div>
-          <div data-aos="fade"><img src="/img/djtech3.jpg" /></div>
-          <div data-aos="fade"><img src="/img/loftcouple.jpg" /></div>
-          <div data-aos="fade"><img src="/img/rayrooftop.jpg" /></div>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitaskies.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitaskies2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitasun.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitasunreflection.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitatrolly.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitabridge1.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitabridge.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/bonitaclose.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/djtech.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/djtech2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/djtech3.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/loftcouple.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="400"><img src="/img/rayrooftop.jpg" /></section>
         </div>
         {/* <Footer /> */}
-        <div className="back-to-top" data-aos="fade-up" data-aos-offset="800">
-            <a href="#!" className="back-to-top"><i className="fas fa-long-arrow-alt-up"></i>Back To Top</a>
-        </div>
+       <BackToTop />
       </Fragment>
     );
   }

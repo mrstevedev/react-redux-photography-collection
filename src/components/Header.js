@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
+import Logo from './Logo';
+import NavBar from './Navbar';
 
 const Header = () => (
-  <Fragment>
-    <img src="/img/logo.svg" className="logo" />
-    <h4 className="logo-sub-txt">Photography</h4>
-  </Fragment>
+  <header className="header">
+    <Logo />
+    <NavBar />
+  </header>
 );
 
 export default Header;
