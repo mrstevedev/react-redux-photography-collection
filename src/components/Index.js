@@ -57,6 +57,23 @@ export class Index extends Component {
     e.currentTarget.parentNode.classList.add('active');
   }
 
+   // Scroll to top
+   basicScrollTop = e => {
+    // The button
+    let backToTopBtn = document.querySelector(".back-to-top-btn");
+    // Smooth scroll top
+    let topScrollTo = function() {
+      if (window.scrollY != 0) {
+        setTimeout(function() {
+          window.scrollTo(0, window.scrollY - 30);
+          topScrollTo();
+        }, 5);
+      }
+    };
+    // Listeners
+    backToTopBtn.addEventListener("click", topScrollTo);
+  };
+
   componentDidCatch() {
     console.log("//-----------ComponentDidCatch Ran");
   }
@@ -82,7 +99,7 @@ export class Index extends Component {
           <section data-aos="fade" data-aos-delay="400"><img src="/img/rayrooftop.jpg" /></section>
         </div>
         {/* <Footer /> */}
-       <BackToTop />
+       <BackToTop basicScrollTop={this.basicScrollTop} />
       </Fragment>
     );
   }
