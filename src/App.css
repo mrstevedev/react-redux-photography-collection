@@ -48,12 +48,69 @@ img {
 .vertical ul {
   text-align: left;
 }
+
 .vertical ul:first-child li {
   padding: 0.4rem 0;
   display: flex;
   align-items: center;
   border-left: solid 1px #000;
   transition: .22s ease-in-out;
+}
+
+.vertical.right {
+  width: 27rem;
+  background: #000;
+  right: 0;
+  padding: 2rem;
+  display: none;
+}
+
+.vertical.right h3{
+  font-size: .7rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.vertical.right .fa-info-circle {
+  color:#fff;
+  font-size: .7rem;
+  padding: 0 .3rem
+}
+
+.camera-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center ;
+}
+
+.camera-info-header {
+  margin: 0 3rem;  
+}
+
+.camera-info-info-body {
+  color: #fff;
+  font-size: .7rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-align: left;
+  margin: 1rem 3rem;
+  width: 100%;
+}
+
+
+.camera-info-close {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.camera-info-close i {
+  color: #424242;
+  transition: .22s ease-in-out;
+  cursor: pointer;
+}
+.camera-info-close i:hover {
+  color: #fff;
 }
 
 .photo-list li:hover {
@@ -95,6 +152,14 @@ img {
     color: #000;
 }
 
+.info-toggle-list li a:hover {
+  color: #fff;
+}
+
+.info-toggle-list li.active a {
+  color: #fff;
+}
+
 .horizontal {
   position: fixed;
   display: flex;
@@ -119,7 +184,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: #949494;
   font-size: 0.73rem;
   text-decoration: none;
   padding: 0 1rem;
@@ -161,6 +226,9 @@ footer {
 }
 
 @media (min-width: 1400px) {
+  body {
+    overflow: hidden;
+  }
   .container > section {
     height: 100vh;
     overflow: hidden;
@@ -190,3 +258,50 @@ footer {
 /* .container > section > img {
     margin: 0 163px;
 } */
+
+.show {
+  display: block!important;
+}
+
+.hide {
+  display: none;
+}
+
+td {
+  padding: 1rem 0px;
+}
+th {
+  color: #a2a2a2;
+}
+
+textarea {
+  background: #080808;
+  border: solid 1px #252525;
+  outline: none;
+  width: 20rem;
+  height: 5rem;
+  text-indent: 1rem;
+  padding: 1rem 0;
+  color: #fff
+}
+
+.camera-info-info-body button {
+  padding: 1rem 4rem;
+  background: #080808;
+  color: #fff;
+  border: solid 1px #252525;
+  outline: none;
+  cursor: pointer;
+  margin: .5rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.camera-info-info-body button:hover {
+  background: #171717;
+}
+
+.star-rating {
+  text-transform: uppercase;
+  padding: 0 1rem;
+}

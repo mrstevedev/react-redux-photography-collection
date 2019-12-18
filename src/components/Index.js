@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import SideBarRight from "./SideBarRight";
 
 
 export class Index extends Component {
@@ -15,13 +16,16 @@ export class Index extends Component {
     super(props);
     console.log(props);
     this.state = {
-      active: true
+      active: true,
+      showSideBarRight: false
     }
   }
   componentDidMount() {
     console.log("//-----------ComponentDidMount Ran");
     AOS.init();
     console.log('AOS Init');
+    const activeState = localStorage.getItem('active');
+    this.setState({ active: activeState });
     let scrollpos = window.scrollY;
     const list = document.querySelector(".photo-list");
     
@@ -47,14 +51,35 @@ export class Index extends Component {
     // });
   }
 
-  handleClick = e => {
-    // e.preventDefault();
-    this.setState({ active: true });
+  handleClick = (e, val) => {
+    console.log(val);
+    const activeState = localStorage.setItem('active', val);
+    this.setState({ active: activeState });
     const active = document.querySelector('.active');
     if(active){
       active.classList.remove('active');
     }
     e.currentTarget.parentNode.classList.add('active');
+  }
+
+  handleSideBarClick = (e, val) => {
+    e.preventDefault();
+    console.log('handleInfoClick Ran');
+    console.log(val);
+    const sideBarRight = document.querySelector('.right');
+    sideBarRight.classList.toggle('show');
+    this.setState({
+      title: val,
+    });
+  }
+
+  handleClose = e => {
+    console.log('handleClose Ran');
+    const sideBarRight = document.querySelector('.right');
+    sideBarRight.classList.remove('show');
+    this.setState({
+      close: true
+    });
   }
 
    // Scroll to top
@@ -82,7 +107,26 @@ export class Index extends Component {
     return (
       <Fragment>
           <Header />
-            <Sidebar active={this.state.active} handleClick={this.handleClick} />
+            <Sidebar 
+              active={this.state.active} 
+              handleSideBarClick={this.handleSideBarClick} 
+              handleClick={this.handleClick} 
+            />
+
+            {this.state.close !== true ? (
+                <SideBarRight
+                  handleClose={this.handleClose}
+                  title={this.state.title}
+                  showSideBarRight={this.state.showSideBarRight}   
+              />
+            ) : (
+              <SideBarRight
+                  handleClose={this.handleClose}
+                  title={this.state.title}
+                  showSideBarRight={this.state.showSideBarRight}   
+              />
+            )}
+          
         <div className="container">
           <section data-aos="fade" data-aos-delay="100" id="one"><img src="/img/bonitaskies.jpg" /></section>
           <section data-aos="fade" data-aos-delay="100" id="two"><img src="/img/bonitaskies2.jpg" /></section>
