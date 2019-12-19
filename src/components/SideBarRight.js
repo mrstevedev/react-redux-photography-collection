@@ -32,23 +32,48 @@ class SideBarRight extends Component {
                   </tbody>                 
                 </table>
               ) : (
-                  <form>
-                    <textarea placeholder="Enter your comments"></textarea>
-                    <div>
-                        <button>Post</button>
-                        <span className="star-rating">
-                            Rate It
-                        </span>
-                        <span>
-                            <i className="far fa-star"></i>
-                            <i className="far fa-star"></i>
-                            <i className="far fa-star"></i>
-                            <i className="far fa-star"></i>
-                            <i className="far fa-star"></i>
-                        </span>
+                  this.props.title === 'Comments' ?  <form>
+                  <textarea placeholder="Enter your comments"></textarea>
+                  <div>
+                      <button>Post</button>
+                      <span className="rating-title">
+                          Rate It
+                      </span>
+                      <span class="star-rating">
+                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
+                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
+                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
+                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
+                          <a href="#!" className="stars"><i className="far fa-star"></i></a>                       
+                      </span>
+                  </div>
+                </form>
+            : (
+                this.props.title === 'Share' ? 
+                <div className="photo-sharing">
+                    <div className="photo-sharing-tabs">
+                    <ul role="tablist">
+                        <li role="presentation" data-tabkey="photo-tab">
+                            <a aria-selected="true" role="tab" tabindex="0" data-key="photo-tab">Photo</a>
+                        </li>
+                        <li role="presentation" data-tabkey="gallery-tab">
+                            <a aria-selected="false" role="tab" tabindex="-1" data-key="gallery-tab">Gallery</a>
+                        </li>
+                        <li role="presentation" data-tabkey="social-tab">
+                            <a aria-selected="false" role="tab" tabindex="-1" data-key="social-tab">Social</a>
+                        </li>
+                        <li role="presentation" data-tabkey="buy-tab">
+                            <a aria-selected="false" role="tab" tabindex="-1" data-key="buy-tab">Cart</a>
+                        </li>
+                    </ul>
+                        <div role="tabpanel" label="Photo">
+                            <div className="share-content">
+                                
+                            </div>
+                        </div>
                     </div>
-                  </form>
-              )}
+                </div>
+            : null ))}
           </div>
         </div>
       </div>
