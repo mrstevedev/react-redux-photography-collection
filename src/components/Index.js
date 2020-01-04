@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import SideBarRight from "./SideBarRight";
+import { store } from '../store';
 
 
 export class Index extends Component {
@@ -99,6 +100,10 @@ export class Index extends Component {
     backToTopBtn.addEventListener("click", topScrollTo);
   };
 
+  handleTabClick = e => {
+    console.log('handle tab click');
+  }
+
   componentDidCatch() {
     console.log("//-----------ComponentDidCatch Ran");
   }
@@ -115,17 +120,12 @@ export class Index extends Component {
 
             {this.state.close !== true ? (
                 <SideBarRight
+                  handleTabClick={this.handleTabClick}
                   handleClose={this.handleClose}
                   title={this.state.title}
                   showSideBarRight={this.state.showSideBarRight}   
               />
-            ) : (
-              <SideBarRight
-                  handleClose={this.handleClose}
-                  title={this.state.title}
-                  showSideBarRight={this.state.showSideBarRight}   
-              />
-            )}
+            ): null}
           
         <div className="container">
           <section data-aos="fade" data-aos-delay="600" id="one"><img src="/img/bonitaskies.jpg" /></section>
