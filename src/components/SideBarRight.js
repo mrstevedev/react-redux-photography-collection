@@ -39,7 +39,7 @@ class SideBarRight extends Component {
                       <span className="rating-title">
                           Rate It
                       </span>
-                      <span class="star-rating">
+                      <span className="star-rating">
                           <a href="#!" className="stars"><i className="far fa-star"></i></a>
                           <a href="#!" className="stars"><i className="far fa-star"></i></a>
                           <a href="#!" className="stars"><i className="far fa-star"></i></a>
@@ -54,21 +54,38 @@ class SideBarRight extends Component {
                     <div className="photo-sharing-tabs">
                     <ul role="tablist">
                         <li role="presentation" data-tabkey="photo-tab">
-                            <a aria-selected="true" role="tab" tabindex="0" data-key="photo-tab">Photo</a>
+                            <a aria-selected="true" role="tab" tabIndex="0" data-key="photo-tab" onClick={this.props.handleTabClick}>Photo</a>
                         </li>
                         <li role="presentation" data-tabkey="gallery-tab">
-                            <a aria-selected="false" role="tab" tabindex="-1" data-key="gallery-tab">Gallery</a>
+                            <a aria-selected="false" role="tab" tabIndex="-1" data-key="gallery-tab" onClick={this.props.handleTabClick}>Gallery</a>
                         </li>
                         <li role="presentation" data-tabkey="social-tab">
-                            <a aria-selected="false" role="tab" tabindex="-1" data-key="social-tab">Social</a>
+                            <a aria-selected="false" role="tab" tabIndex="-1" data-key="social-tab" onClick={this.props.handleTabClick}>Social</a>
                         </li>
                         <li role="presentation" data-tabkey="buy-tab">
-                            <a aria-selected="false" role="tab" tabindex="-1" data-key="buy-tab">Cart</a>
+                            <a aria-selected="false" role="tab" tabIndex="-1" data-key="buy-tab" onClick={this.props.handleTabClick}>Cart</a>
                         </li>
                     </ul>
                         <div role="tabpanel" label="Photo">
                             <div className="share-content">
-                                
+                                <h3>Photo Link</h3>
+                                <input className="photo-sharing-tabs-input" type="text" readOnly tabIndex="1" value="https://stevenpulidophotography.com/p/5kKdm344" />
+
+                                <div>
+                                  <h3>Embed Photo</h3>
+                                  <div className="sp-form-field-underline sp-share-size-dropdown">
+                                    <label class="sp-label">Size</label>
+                                      <div>
+                                        <div>
+                                          <select>
+                                            <option value="">Choose a size</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
