@@ -1,6 +1,6 @@
-function setInfo(text) {
+export function setInfo(photo) {
     return {
-        type: 'SET_INFO',
-        text: text
+        type: 'SET_PHOTO',
+        photo: photo
     }
-} 
+}
