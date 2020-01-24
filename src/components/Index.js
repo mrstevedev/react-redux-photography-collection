@@ -111,18 +111,18 @@ export class Index extends Component {
           
         <div className="container">
           <PhotoOne imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} />
-          <section data-aos="fade" data-aos-delay="300" id="two"><img src="/img/bonitaskies2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="three"><img src="/img/bonitasun.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="four"><img src="/img/bonitasunreflection.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="five"><img src="/img/bonitatrolly.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="six"><img src="/img/bonitabridge1.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="seven"><img src="/img/bonitabridge.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="eight"><img src="/img/bonitaclose.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="nine"><img src="/img/djtech.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="ten"><img src="/img/djtech2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="eleven"><img src="/img/djtech3.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="twelve"><img src="/img/loftcouple.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="300" id="thirteen"><img src="/img/rayrooftop.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="two"><img src="/img/bonitaskies2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="three"><img src="/img/bonitasun.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="four"><img src="/img/bonitasunreflection.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="five"><img src="/img/bonitatrolly.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="six"><img src="/img/bonitabridge1.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="seven"><img src="/img/bonitabridge.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="eight"><img src="/img/bonitaclose.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="nine"><img src="/img/djtech.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="ten"><img src="/img/djtech2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="eleven"><img src="/img/djtech3.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="twelve"><img src="/img/loftcouple.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="100" id="thirteen"><img src="/img/rayrooftop.jpg" /></section>
         </div>
         {/* <Footer /> */}
        <BackToTop />
