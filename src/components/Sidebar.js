@@ -1,16 +1,19 @@
 import React, { useState, Fragment } from 'react';
-import DownloadPhotoIcon from '../components/DownloadPhotoIcon';
+import CameraInfo from './CameraInfo';
+import CommentPhoto from './CommentPhoto';
+import SharePhoto from './SharePhoto';
+import DownloadPhoto from './DownloadPhoto';
 import { store } from '../store';
 import { setInfo } from '../actions';
 
 const Sidebar = (props) => {
 
-    const[active, setActive] = useState(props);
+    // const[active, setActive] = useState(props);
     
     const dispatchAction = (e, val) => {
         const activeState = localStorage.setItem('active', val);
-        setActive({ active: activeState });
         const active = document.querySelector('.active');
+        // setActive({ active: activeState });
         if(active){
           active.classList.remove('active');
         }
@@ -36,11 +39,20 @@ const Sidebar = (props) => {
                         <li className={props.active === 'twelve' ? 'active' : ''}><a className="nav-link" href="#twelve" onClick={(e) => dispatchAction(e, 'twelve')}>Loft Couple</a></li>
                     </ul>
                     <ul className="info-toggle-list">
-                        <li><a href="#!" onClick={(e) => props.handleSideBarClick(e, 'Camera Info')}><i className="fas fa-info-circle"></i></a></li>
-                        <li><a href="#!" onClick={(e) => props.handleSideBarClick(e, 'Comments')}><i className="fas fa-comments"></i></a></li>
-                        <li><a href="#!" onClick={(e) => props.handleSideBarClick(e, 'Share')}><i className="fas fa-share-alt"></i></a></li>
-                        <DownloadPhotoIcon
-                            handlePhotoDownload={(e) => dispatchAction(e, 'photo')}
+                        {/* <li><a href="#!" onClick={(e) => props.handleSideBarClick(e, 'Camera Info')}><i className="fas fa-info-circle"></i></a></li> */}
+                        <CameraInfo 
+                            handleCameraInfo={(e) => props.handleSideBarClick(e, 'Camera Info')} />
+
+                        <CommentPhoto
+                            handleComment={(e) => props.handleSideBarClick(e, 'Comments')} />
+
+                        <SharePhoto 
+                            handleShare={(e) => props.handleSideBarClick(e, 'Share')} 
+                        />
+                        <DownloadPhoto
+                            imageName={store.getState().imageName}
+                            imagePath={store.getState().imagePath}
+                            handlePhotoDownload={(e) => dispatchAction(e, 'Download_Photo')}
                         />
                     </ul>
                     </nav>
