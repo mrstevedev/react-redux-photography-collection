@@ -5,8 +5,8 @@ const DownloadPhotoIcon = (props) => {
         <Fragment>
             <li>
                 <a 
-                href="#!" 
-                // download={imageSrc} 
+                href={props.imagePath} 
+                download={props.imageName} 
                 onClick={(e) => props.handlePhotoDownload(e)}>
                 <i className="fas fa-download"></i>
                 </a>
