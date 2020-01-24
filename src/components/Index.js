@@ -10,6 +10,7 @@ import AOS from "aos";
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import SideBarRight from "./SideBarRight";
 import { store } from '../store';
+import PhotoOne from './PhotoOne';
 
 
 export class Index extends Component {
@@ -17,7 +18,7 @@ export class Index extends Component {
     super(props);
     console.log(props);
     this.state = {
-      active: true,
+      active: '',
       showSideBarRight: false
     }
   }
@@ -25,20 +26,25 @@ export class Index extends Component {
     console.log("//-----------ComponentDidMount Ran");
     AOS.init();
     console.log('AOS Init');
+    console.log('call store.getState(): ', store.getState().photos);
+
     const activeState = localStorage.getItem('active');
     this.setState({ active: activeState });
     let scrollpos = window.scrollY;
-    const list = document.querySelector(".photo-list");
-    
+    const list = document.querySelector(".photo-list");    
     const listItem = document.querySelector(".photo-list li");
 
-    function add_class_on_scroll() {
-      list.classList.add("active");
+    if(localStorage.getItem('active') === null ){
+      listItem.classList.add("active");
     }
 
-    function remove_class_on_scroll() {
-      list.classList.remove("active");
-    }
+    // function add_class_on_scroll() {
+    //   list.classList.add("active");
+    // }
+
+    // function remove_class_on_scroll() {
+    //   list.classList.remove("active");
+    // }
 
     // window.addEventListener("scroll", function() {
     //   //Here you forgot to update the value
@@ -52,53 +58,27 @@ export class Index extends Component {
     // });
   }
 
-  handleClick = (e, val) => {
-    console.log(val);
-    const activeState = localStorage.setItem('active', val);
-    this.setState({ active: activeState });
-    const active = document.querySelector('.active');
-    if(active){
-      active.classList.remove('active');
-    }
-    e.currentTarget.parentNode.classList.add('active');
+  handlePhotoDownload = e => {
+    console.log(e);
   }
 
   handleSideBarClick = (e, val) => {
     e.preventDefault();
     console.log('handleInfoClick Ran');
     console.log(val);
-    const sideBarRight = document.querySelector('.right');
-    sideBarRight.classList.toggle('show');
     this.setState({
-      title: val,
+      showSideBarRight: true,
+      title: val
     });
   }
 
   handleClose = e => {
     console.log('handleClose Ran');
-    const sideBarRight = document.querySelector('.right');
-    sideBarRight.classList.remove('show');
     this.setState({
-      close: true
+      showSideBarRight: false
     });
   }
 
-   // Scroll to top
-   basicScrollTop = e => {
-    // The button
-    let backToTopBtn = document.querySelector(".back-to-top-btn");
-    // Smooth scroll top
-    let topScrollTo = function() {
-      if (window.scrollY != 0) {
-        setTimeout(function() {
-          window.scrollTo(0, window.scrollY - 30);
-          topScrollTo();
-        }, 5);
-      }
-    };
-    // Listeners
-    backToTopBtn.addEventListener("click", topScrollTo);
-  };
 
   handleTabClick = e => {
     console.log('handle tab click');
@@ -112,9 +92,11 @@ export class Index extends Component {
     return (
       <Fragment>
           <Header />
-            <Sidebar 
+            <Sidebar
+              imageSrc={store.getState().imageSrc}
               active={this.state.active} 
               handleSideBarClick={this.handleSideBarClick} 
+              handlePhotoDownload={this.handlePhotoDownload}
               handleClick={this.handleClick} 
             />
 
@@ -128,22 +110,22 @@ export class Index extends Component {
             ): null}
           
         <div className="container">
-          <section data-aos="fade" data-aos-delay="600" id="one"><img src="/img/bonitaskies.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="two"><img src="/img/bonitaskies2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="three"><img src="/img/bonitasun.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="four"><img src="/img/bonitasunreflection.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="five"><img src="/img/bonitatrolly.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="six"><img src="/img/bonitabridge1.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="seven"><img src="/img/bonitabridge.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="eight"><img src="/img/bonitaclose.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="nine"><img src="/img/djtech.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="ten"><img src="/img/djtech2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="eleven"><img src="/img/djtech3.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="twelve"><img src="/img/loftcouple.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="600" id="thirteen"><img src="/img/rayrooftop.jpg" /></section>
+          <PhotoOne imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} />
+          <section data-aos="fade" data-aos-delay="300" id="two"><img src="/img/bonitaskies2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="three"><img src="/img/bonitasun.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="four"><img src="/img/bonitasunreflection.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="five"><img src="/img/bonitatrolly.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="six"><img src="/img/bonitabridge1.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="seven"><img src="/img/bonitabridge.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="eight"><img src="/img/bonitaclose.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="nine"><img src="/img/djtech.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="ten"><img src="/img/djtech2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="eleven"><img src="/img/djtech3.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="twelve"><img src="/img/loftcouple.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="300" id="thirteen"><img src="/img/rayrooftop.jpg" /></section>
         </div>
         {/* <Footer /> */}
-       <BackToTop basicScrollTop={this.basicScrollTop} />
+       <BackToTop />
       </Fragment>
     );
   }
