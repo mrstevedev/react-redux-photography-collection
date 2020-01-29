@@ -4,6 +4,7 @@ import About from "./components/About";
 import NotFound from "./components/NotFound";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Contact from "./components/Contact";
 
 class App extends Component {
   componentDidMount() {
@@ -14,7 +15,8 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Index} />
-          <Route exact path="/About" component={About} />
+          <Route path="/About" component={About} />
+          <Route path="/Contact" component={Contact} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
