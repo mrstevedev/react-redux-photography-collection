@@ -80,7 +80,7 @@ img {
   right: 0;
   padding: 2rem;
   opacity: 0;
-  transition: opacity .2s ease-in-out;
+  transition: opacity .07s ease-in-out;
 }
 
 .vertical.right h3{
@@ -478,7 +478,6 @@ label input {
 }
 
 .goback {
-  margin: 0 2rem;
   color:#ccc;
   transition: .10s ease-in-out;
 }
@@ -495,12 +494,12 @@ label input {
 
 header {
   display: flex;
-  padding: 1rem 0;
+  padding: 1rem;
 }
 
 .logo-container {
   text-align: center;
-  margin: 0rem 15rem;
+  margin: 0rem 19rem;
 }
 
 /* About */
@@ -567,4 +566,18 @@ section.vert header, section.vert footer {
 
 section footer {
   background: #ffffff;
+}
+
+.copyright-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 58%;
+  padding: 0 .5rem;
+}
+
+.copyright {
+  color:#fff;
+  font-size: .68rem;
+  line-height: 11px;
 }
