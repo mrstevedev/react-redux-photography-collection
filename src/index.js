@@ -2,5 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './App.css';
+import {store} from './store';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+
+import { BrowserRouter } from 'react-router-dom';
+
+
+const render = () => {
+    ReactDOM.render(
+    <BrowserRouter history={history}>
+        <App />
+    </BrowserRouter>
+    , document.getElementById('app'));
+}
+render();
+store.subscribe(render);
