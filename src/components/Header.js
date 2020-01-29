@@ -3,7 +3,7 @@ import Logo from './Logo';
 import NavBar from './Navbar';
 
 const Header = () => (
-  <header className="header">
+  <header className="header" data-aos="fade" data-aos-delay="100">
     <Logo />
     <NavBar />
   </header>
