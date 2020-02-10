@@ -3,11 +3,11 @@ import React, { Fragment } from "react";
 const SharePhoto = (props) => {
   return (
     <Fragment>
-      <li>
         <a href="#!" onClick={(e) => props.handleShare(e)}>
+      <li>
           <i className="fas fa-share-alt"></i>
-        </a>
       </li>
+        </a>
     </Fragment>
   );
 };
