@@ -481,6 +481,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background: #333;
   color: #fff;
+  transition: .12s ease-in-out;
 }
 
 label input {
