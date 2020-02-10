@@ -478,6 +478,11 @@ input[type="submit"] {
       border: solid 1px #a7a7a7;
 }
 
+input[type="submit"]:hover {
+  background: #333;
+  color: #fff;
+}
+
 label input {
   margin: 0 0 1.8rem 0;
 }
