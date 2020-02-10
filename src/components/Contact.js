@@ -47,8 +47,6 @@ const Contact = props => {
     <Fragment>
       <section
         className="contact"
-        data-aos="fade"
-        data-aos-delay="100"
       >
         <div className="left"></div>
         <div className="right">
@@ -65,35 +63,35 @@ const Contact = props => {
 
           <div className="contact-form">
            {!success ? (
- <form id="contact-form" onSubmit={handleSubmit} method="POST">
- <label>
-   <input 
-     type="text" 
-     name="name" 
-     required 
-     placeholder="Name" 
-     onChange={event => setName(event.target.value)} />
- </label>
+            <form id="contact-form" onSubmit={handleSubmit} method="POST">
+            <label>
+              <input 
+                type="text" 
+                name="name" 
+                required 
+                placeholder="Name" 
+                onChange={event => setName(event.target.value)} />
+            </label>
 
- <label>
-   <input type="text" 
-     name="email" 
-     required 
-     placeholder="Email" 
-     onChange={event => setEmail(event.target.value)}  
-     />
- </label>
- <label>
-   <input
-     type="text"
-     name="message"
-     required
-     placeholder="Message"
-     onChange={event => setMessage(event.target.value)}  
-   />
- </label>
- <input type="submit" value="Submit" />
-</form>
+            <label>
+              <input type="text" 
+                name="email" 
+                required 
+                placeholder="Email" 
+                onChange={event => setEmail(event.target.value)}  
+                />
+            </label>
+            <label>
+              <input
+                type="text"
+                name="message"
+                required
+                placeholder="Message"
+                onChange={event => setMessage(event.target.value)}  
+              />
+            </label>
+            <input type="submit" value="Submit" />
+            </form>
            ) : 'Message Sent'}
           </div>
         </div>
