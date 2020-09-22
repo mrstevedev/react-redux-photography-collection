@@ -21,10 +21,8 @@ const About = (props) => {
             <i className="fas fa-angle-double-left"></i>
             </Link>           
                 <p className="about-text">
-                    Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, 
-                    auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. 
-                    Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh. 
-                    Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada.
+                    Personal showcase of photos I have taken over the years. Some of the photos were taken with a smartphone that I had that was branded and sold at a 
+                    communications company I had worked at as a Full Stack Developer in addition to a Nikon D3300.
                 </p>
             </section>
             </div>        
