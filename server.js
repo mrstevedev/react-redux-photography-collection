@@ -11,14 +11,6 @@ app.use(express.json())
 app.use('/contact', router)
 app.use('/', router)
 
-router.get('/', (req, res) => {
-  res.send('homepage')
-});
-
-router.get('/success', (req, res) => {
-  res.send('success')
-});
-
 let transport = {
     host: 'smtp.gmail.com', // Don’t forget to replace with the SMTP host of your provider
     port: 587,
@@ -39,17 +31,14 @@ transporter.verify((error, success) => {
 });
 
 router.post('/success', (req, res) => {
-  res.send('success');
   let name = req.body.name;
   let email = req.body.email;
   let message = req.body.message;
   let content = `name: ${name} \n email: ${email} \n message: ${message}`;
 
-
-
   let mail = {
     from: name,
-    to: 'stevendotpulido@gmail.com',  // Change to email address that you want to receive messages on
+    to: email,  // Change to email address that you want to receive messages on
     subject: 'New Message from Contact Form',
     text: content,
     html: `<table style="width: 100%; background: #f7f7f7;padding: .5rem;">
@@ -79,6 +68,7 @@ router.post('/success', (req, res) => {
       })
     }
   })
+  res.send('success');
 })
 
 const PORT = process.env.PORT || 4000;
