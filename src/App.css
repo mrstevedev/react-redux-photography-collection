@@ -478,7 +478,7 @@ input[type="submit"] {
       border: none;
       outline: none;
       cursor: pointer;
-      border: solid 1px #a7a7a7;
+      /* border: solid 1px #a7a7a7; */
 }
 
 input[type="submit"]:hover {
@@ -586,7 +586,7 @@ section footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 58%;
+  height: 62%;
   padding: 0 1rem;
   line-height: 0px;
 }
