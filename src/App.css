@@ -144,7 +144,8 @@ img {
 
 .photo-list-header {
     color:#fff;
-    padding: .3rem 1rem
+    padding: .3rem 1rem;
+    text-transform: capitalize;
 }
 /* 
 .info-toggle-list {
@@ -220,6 +221,8 @@ nav ul li a {
   transition: 0.22s ease-in-out;
   position: relative;
   letter-spacing: .04rem;
+  text-transform: capitalize;
+  font-weight: 400;
 }
 
 .nav-link:hover {
