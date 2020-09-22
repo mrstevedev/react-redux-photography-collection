@@ -29,16 +29,11 @@ const Contact = props => {
       if(res.data === 'success') {
         console.log('Message Sent');
         setSuccess('Success');
-        resetForm();
       } else if(res.data === 'fail') {
         console.log('Message Fail');
       }
     }).catch(err => console.log(err))
   };
-
-  const resetForm = () => {
-    document.getElementById('contact-form').reset();
-  }
 
   const handleLink = () => {
     props.history.push("/");
