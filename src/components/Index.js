@@ -23,6 +23,9 @@ export class Index extends Component {
     AOS.init();
     console.log('AOS Init');
     console.log('call store.getState(): ', store.getState().photos);
+    fetch('http://localhost:4000/api/photo')
+      .then(res => res.json())
+      .then(data => console.log(data))
 
     const activeState = localStorage.getItem('active');
     this.setState({ active: activeState });
@@ -189,18 +192,18 @@ export class Index extends Component {
           
         <div className="container">
           <Photo imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} />
-          <section data-aos="fade" data-aos-delay="30" id="two"><img src="/img/bonitaskies2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="three"><img src="/img/bonitasun.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="four"><img src="/img/bonitasunreflection.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="five"><img src="/img/bonitatrolly.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="six"><img src="/img/bonitabridge1.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="seven"><img src="/img/bonitabridge.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="eight"><img src="/img/bonitaclose.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="nine"><img src="/img/djtech.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="ten"><img src="/img/djtech2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="eleven"><img src="/img/djtech3.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="twelve"><img src="/img/loftcouple.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="thirteen"><img src="/img/rayrooftop.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="two"><img src="./img/bonitaskies2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="three"><img src="./img/bonitasun.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="four"><img src="./img/bonitasunreflection.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="five"><img src="./img/bonitatrolly.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="six"><img src="./img/bonitabridge1.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="seven"><img src="./img/bonitabridge.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="eight"><img src="./img/bonitaclose.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="nine"><img src="./img/djtech.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="ten"><img src="./img/djtech2.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="eleven"><img src="./img/djtech3.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="twelve"><img src="./img/loftcouple.jpg" /></section>
+          <section data-aos="fade" data-aos-delay="30" id="thirteen"><img src="./img/rayrooftop.jpg" /></section>
         </div>
         {/* <Footer /> */}
        <BackToTop />
