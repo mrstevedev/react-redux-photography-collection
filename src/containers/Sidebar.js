@@ -24,7 +24,7 @@ const Sidebar = (props) => {
             <Fragment>
                  <aside className="vertical" data-aos="fade-right">
                     <ul className="photo-list">
-                    <h4 className="photo-list-header">My Photos </h4>
+                    <h4 className="photo-list-header">Photo Collection</h4>
                         <a className="nav-link" href="#one" onClick={(e) => handleSideBarClick(e, 'one')}><li className={props.active === 'one' ? 'active' : ''}>Bonita Misty Morning</li></a>
                         <a className="nav-link" href="#two" onClick={(e) => handleSideBarClick(e, 'two')}><li className={props.active === 'two' ? 'active' : ''}>Bonita Early Morning</li></a>
                         <a className="nav-link" href="#three" onClick={(e) => handleSideBarClick(e, 'three')}><li className={props.active === 'three' ? 'active' : ''}>Bonita Sun</li></a>
