@@ -3,6 +3,7 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var cors = require('cors');
 const creds = require('./config');
+const photos = require('./api/photos');
 
 const app = express();
 
@@ -29,6 +30,10 @@ transporter.verify((error, success) => {
     console.log('Server is ready to take messages');
   }
 });
+
+router.get('/api/photo', (req, res) => {
+  res.json(photos)
+})
 
 router.post('/success', (req, res) => {
   let name = req.body.name;
