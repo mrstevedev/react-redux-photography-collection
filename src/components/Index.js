@@ -23,11 +23,12 @@ export class Index extends Component {
     }
   }
   componentDidMount() {
+    const { REACT_APP_API_URL } = process.env;
     console.log("//-----------ComponentDidMount Ran");
     AOS.init();
     console.log('AOS Init');
     console.log('call store.getState(): ', store.getState().photos);
-    fetch('http://localhost:4000/api/photo')
+    fetch(`${ REACT_APP_API_URL }/photo`)
       .then(res => res.json())
       .then(data => {
         this.setState({ photos: data })
