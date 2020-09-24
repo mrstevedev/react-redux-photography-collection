@@ -10,10 +10,10 @@ const About = (props) => {
         <Fragment>
             <Header />
         <div className="container">           
-            <div class="demo image above"> 
-                <section class="vert">
+            <div className="demo image above"> 
+                <section className="vert">
                     <header></header>
-                    <div class="separator"></div>
+                    <div className="separator"></div>
                     <footer></footer>
                 </section>
                 <section className="about"> 
