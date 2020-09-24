@@ -64,25 +64,14 @@ export class Index extends Component {
           localStorage.removeItem('shareInfoContent');
           this.setState({
             cameraInfoContent: 
-            localStorage.setItem('cameraInfoContent', JSON.stringify(`
-              <table style="width: 100%">
-                <tbody>                    
-                <tr>
-                    <th>Title</th>
-                    <td>${ curr.title }</td>
-                </tr>
-                <tr>
-                    <th>Location</th>
-                    <td>${ curr.location }</td>
-                </tr>
-                <tr>
-                    <th>Camera</th>
-                    <td>${ curr.camera }</td>
-                </tr>
-                </tbody>                 
-              </table>`))
-        })
-      }
+            localStorage.setItem('cameraInfoContent', 
+            JSON.stringify({
+              title: curr.title,
+              location: curr.location,
+              camera: curr.camera
+            }))
+          })
+        }
     }); 
   }
 
@@ -136,6 +125,7 @@ export class Index extends Component {
 
             {this.state.close !== true ? (
               <SideBarRight
+                currentPhoto={this.state.currentPhoto}
                 handleTabClick={this.handleTabClick}
                 handleClose={this.handleClose}
                 title={this.state.title}
