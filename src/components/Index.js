@@ -68,7 +68,8 @@ export class Index extends Component {
             JSON.stringify({
               title: curr.title,
               location: curr.location,
-              camera: curr.camera
+              camera: curr.camera,
+              imagePath: curr.imagePath
             }))
           })
         }
