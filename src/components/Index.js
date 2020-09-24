@@ -7,6 +7,8 @@ import SideBarRight from "./SideBarRight";
 import { store } from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import photos from "../../api/photos";
+import CameraInfo from './CameraInfo';
 
 
 export class Index extends Component {
@@ -15,7 +17,9 @@ export class Index extends Component {
     console.log(props);
     this.state = {
       active: '',
-      showSideBarRight: false
+      showSideBarRight: false,
+      photos: [],
+      currentPhoto: {}
     }
   }
   componentDidMount() {
@@ -25,7 +29,9 @@ export class Index extends Component {
     console.log('call store.getState(): ', store.getState().photos);
     fetch('http://localhost:4000/api/photo')
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({ photos: data })
+      })
 
     const activeState = localStorage.getItem('active');
     this.setState({ active: activeState });
@@ -44,7 +50,7 @@ export class Index extends Component {
     console.log(e)
   }
 
-  handleSideBarClick = (e, val) => {
+  handleRightSideBarClick = (e, curr, val) => {
     e.preventDefault();
    
     this.setState({
@@ -61,16 +67,16 @@ export class Index extends Component {
               <table style="width: 100%">
                 <tbody>                    
                 <tr>
-                    <th>Transmission <br /> Reference</th>
-                    <td>Bill Gates</td>
+                    <th>Title</th>
+                    <td>${ this.state.currentPhoto.title }</td>
                 </tr>
                 <tr>
-                    <th>Name</th>
-                    <td>555 77 854</td>
+                    <th>Location</th>
+                    <td>${ this.state.currentPhoto.location }</td>
                 </tr>
                 <tr>
-                    <th>Size</th>
-                    <td>555 77 855</td>
+                    <th>Camera</th>
+                    <td>${ this.state.currentPhoto.camera }</td>
                 </tr>
                 </tbody>                 
               </table>`))
@@ -152,6 +158,23 @@ export class Index extends Component {
     }); 
   }
 
+  handleSideBarClick = (e, id, val) => {
+    const activeState = localStorage.setItem('active', val);
+    const activeNode = document.querySelector('.active');
+    const getActiveState = localStorage.getItem('active');
+    if(id) {
+      const currPhoto = photos.find((photo) => photo.id === id)
+      this.setState({ currentPhoto: currPhoto }, () => console.log(this.state.currentPhoto ))
+    }
+    this.setState({ active: getActiveState });
+    console.log('id: ', id)
+    if(activeNode){
+      activeNode.classList.remove('active');
+    }
+    e.currentTarget.querySelector('.nav-link li').classList.add('active');
+    // store.dispatch(setInfo(val))
+  }
+
   handleClose = e => {
     console.log('handleClose Ran');
     localStorage.removeItem('sidebarRight');
@@ -174,6 +197,8 @@ export class Index extends Component {
       <Fragment>
           <Header />
             <Sidebar
+              currentPhoto={this.props.currentPhoto}
+              photos={this.state.photos}
               imageSrc={store.getState().imageSrc}
               active={this.state.active} 
               handleSideBarClick={this.handleSideBarClick} 
@@ -190,20 +215,9 @@ export class Index extends Component {
             />
           ): null}
           
-        <div className="container">
-          <Photo imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} />
-          <section data-aos="fade" data-aos-delay="30" id="two"><img src="./img/bonitaskies2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="three"><img src="./img/bonitasun.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="four"><img src="./img/bonitasunreflection.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="five"><img src="./img/bonitatrolly.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="six"><img src="./img/bonitabridge1.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="seven"><img src="./img/bonitabridge.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="eight"><img src="./img/bonitaclose.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="nine"><img src="./img/djtech.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="ten"><img src="./img/djtech2.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="eleven"><img src="./img/djtech3.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="twelve"><img src="./img/loftcouple.jpg" /></section>
-          <section data-aos="fade" data-aos-delay="30" id="thirteen"><img src="./img/rayrooftop.jpg" /></section>
+        <div className="container">         
+          <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
+          {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
         </div>
         {/* <Footer /> */}
        <BackToTop />
