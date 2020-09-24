@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import store from '../store';
 
 const SideBarRight = (props) => {
-  const cameraInfo = JSON.parse(localStorage.getItem('cameraInfoContent'));
+  const cameraInfo = JSON.parse(localStorage.getItem('cameraInfoContent') !== null);
     return (
       <aside className={`vertical right ` + (props.showSideBarRight === true ? 'show' : '' || localStorage.getItem('sidebarRight') !== null ? 'show' : '')}>
         <div className="camera-info-close"><i className="fas fa-times" onClick={props.handleClose}></i></div>
