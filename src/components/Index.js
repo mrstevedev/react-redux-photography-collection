@@ -69,92 +69,19 @@ export class Index extends Component {
                 <tbody>                    
                 <tr>
                     <th>Title</th>
-                    <td>${ this.state.currentPhoto.title }</td>
+                    <td>${ curr.title }</td>
                 </tr>
                 <tr>
                     <th>Location</th>
-                    <td>${ this.state.currentPhoto.location }</td>
+                    <td>${ curr.location }</td>
                 </tr>
                 <tr>
                     <th>Camera</th>
-                    <td>${ this.state.currentPhoto.camera }</td>
+                    <td>${ curr.camera }</td>
                 </tr>
                 </tbody>                 
               </table>`))
         })
-      } else if(this.state.title === 'Comments'){
-        localStorage.removeItem('cameraInfoContent');
-        localStorage.removeItem('shareInfoContent');
-        this.setState({
-          commentInfoContent:
-            localStorage.setItem('commentInfoContent', JSON.stringify(`
-                <form>
-                  <textarea placeholder="Enter your comments"></textarea>
-                  <div>
-                      <button>Post</button>
-                      <span className="rating-title">
-                          Rate It
-                      </span>
-                      <span className="star-rating">
-                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
-                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
-                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
-                          <a href="#!" className="stars"><i className="far fa-star"></i></a>
-                          <a href="#!" className="stars"><i className="far fa-star"></i></a>                       
-                      </span>
-                  </div>
-                </form>
-          `))
-        })
-      } else if(this.state.title === 'Share') {
-        localStorage.removeItem('commentInfoContent');
-        localStorage.removeItem('cameraInfoContent');
-        
-        this.setState({
-          shareInfoContent:
-            localStorage.setItem('shareInfoContent', JSON.stringify(`
-                <div id="photo-sharing" class="photo-sharing">
-                    <div class="photo-sharing-tabs">
-                    <ul role="tablist">
-                        <li role="presentation" data-tabkey="photo-tab">
-                            <a aria-selected="true" role="tab" tabIndex="0" data-key="photo-tab" onClick={props.handleTabClick}>Photo</a>
-                        </li>
-                        <li role="presentation" data-tabkey="gallery-tab">
-                            <a aria-selected="false" role="tab" tabIndex="-1" data-key="gallery-tab" onClick={props.handleTabClick}>Gallery</a>
-                        </li>
-                        <li role="presentation" data-tabkey="social-tab">
-                            <a aria-selected="false" role="tab" tabIndex="-1" data-key="social-tab" onClick={props.handleTabClick}>Social</a>
-                        </li>
-                        <li role="presentation" data-tabkey="buy-tab">
-                            <a aria-selected="false" role="tab" tabIndex="-1" data-key="buy-tab" onClick={props.handleTabClick}>Cart</a>
-                        </li>
-                    </ul>
-                        <div role="tabpanel" label="Photo">
-                            <div class="share-content">
-                                <h3>Photo Link</h3>
-                                <input class="photo-sharing-tabs-input" type="text" readOnly tabIndex="1" value="https://stevenpulidophotography.com/p/5kKdm344" />
-
-                                <div>
-                                  <h3>Embed Photo</h3>
-                                  <div class="sp-form-field-underline sp-share-size-dropdown">
-                                    <label class="sp-label">Size</label>
-                                      <div>
-                                        <div>
-                                          <select>
-                                            <option value="">Choose a size</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `))
-         }, () => {
-           // Append event handler to input dynamically
-         })
       }
     }); 
   }
