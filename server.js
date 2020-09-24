@@ -1,13 +1,20 @@
-var express = require('express');
-var router = express.Router();
-var nodemailer = require('nodemailer');
-var cors = require('cors');
+const express = require('express');
+const router = express.Router();
+const nodemailer = require('nodemailer');
+const cors = require('cors');
 const creds = require('./config');
 const photos = require('./api/photos');
+const dotenv = require('dotenv');
+
+// Load env vars
+dotenv.config({ path: './.env' });
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:9000',
+  credentials: true
+}))
 app.use(express.json())
 app.use('/contact', router)
 app.use('/', router)
