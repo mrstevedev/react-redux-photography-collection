@@ -13,7 +13,7 @@ const Sidebar = (props) => {
                     <h4 className="photo-list-header">Photo Collection</h4>
                     {photos.map(photo => (
                         <a key={photo.id} className="nav-link" href={`#${ photo.href }`} onClick={(e) => props.handleSideBarClick(e, photo.id, photo.href)}>
-                          <li className={ props.active === props.href ? 'active' : ''}>{photo.title}</li>
+                          <li className={ props.active === photo.href ? 'active' : ''}>{ photo.title }</li>
                         </a>
                     ))}                        
                     </ul>                    
