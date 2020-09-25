@@ -16,7 +16,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 module.exports = {
   entry: ['@babel/polyfill','./src/index.js'],
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/build'),
     publicPath: '/',
     filename: 'index_bundle.js'
   },
