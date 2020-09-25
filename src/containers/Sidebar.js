@@ -3,19 +3,18 @@ import { store } from '../store';
 import { setInfo } from '../actions';
 
 const Sidebar = (props) => {
-
-    const { photos } = props;
-
+        let arr = Array.from(props.photos);
+        console.log('props in sidebar::::', props)
         return (
             <Fragment>
                  <aside className="vertical" data-aos="fade-right">
                     <ul className="photo-list">
                     <h4 className="photo-list-header">Photo Collection</h4>
-                    {photos.map(photo => (
+                    {arr.map(photo => (
                         <a key={photo.id} className="nav-link" href={`#${ photo.href }`} onClick={(e) => props.handleSideBarClick(e, photo.id, photo.href)}>
                           <li className={ props.active === photo.href ? 'active' : ''}>{ photo.title }</li>
                         </a>
-                    ))}                        
+                    ))}
                     </ul>                    
                     <ul className="copyright-list">
                       <li>
