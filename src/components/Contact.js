@@ -56,7 +56,7 @@ const Contact = props => {
             </div>
           </header>
 
-          <div className="contact-form">
+          <div className="contact-form-container">
            {!success ? (
             <form id="contact-form" onSubmit={handleSubmit} method="POST">
             <label>
