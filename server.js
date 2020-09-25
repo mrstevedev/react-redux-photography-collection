@@ -3,13 +3,18 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const creds = require('./config');
-const photos = require('./api/photos');
+const photos = require('./api/photos.json');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Load env vars
 dotenv.config({ path: './.env' });
 
 const app = express();
+
+// add middlewares
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
 
 app.use(cors({
   origin: 'http://localhost:9000',
@@ -37,6 +42,10 @@ transporter.verify((error, success) => {
     console.log('Server is ready to take messages');
   }
 });
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 router.get('/api/photo', (req, res) => {
   res.json(photos)
@@ -82,6 +91,10 @@ router.post('/success', (req, res) => {
   })
   res.send('success');
 })
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
 
 const PORT = process.env.PORT || 4000;
 
