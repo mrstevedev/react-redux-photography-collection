@@ -14,16 +14,20 @@ const SideBarRight = (props) => {
               <table style={{ width: '100%' }}>
                 <tbody>                    
                 <tr>
-                    <th>Title</th>
-                    <td>{ props.currentPhoto.title ? props.currentPhoto.title : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.title : '' }</td>
+                    <th>Photo Title</th>
+                    <td><i class="fas fa-heading" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.title ? props.currentPhoto.title : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.title : '' }</td>
                 </tr>
                 <tr>
                     <th>Location</th>
-                    <td>{ props.currentPhoto.location ? props.currentPhoto.location : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.location : '' }</td>
+                    <td><i class="fas fa-map-marker-alt" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.location ? props.currentPhoto.location : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.location : '' }</td>
                 </tr>
                 <tr>
                     <th>Camera</th>
-                    <td>{ props.currentPhoto.camera ? props.currentPhoto.camera : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.camera : '' }</td>
+                    <td><i class="fas fa-camera" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.camera ? props.currentPhoto.camera : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.camera : '' }</td>
+                </tr>
+                <tr>
+                    <th>Download</th>
+                    <td><a style={{ color: '#a9a9ff' }} href={ cameraInfo.imagePath } download={ cameraInfo.title }><i class="fas fa-cloud-download-alt" style={{ fontSize: '0.7rem' }}></i> { cameraInfo.title }</a></td>
                 </tr>
                 </tbody>     
               </table>
