@@ -67,8 +67,6 @@ export class Index extends Component {
         if(this.state.title === 'Camera Info') {
           localStorage.removeItem('commentInfoContent');
           localStorage.removeItem('shareInfoContent');
-          this.setState({
-            cameraInfoContent: 
             localStorage.setItem('cameraInfoContent', 
             JSON.stringify({
               title: curr.title,
@@ -76,7 +74,6 @@ export class Index extends Component {
               camera: curr.camera,
               imagePath: curr.imagePath
             }))
-          })
         }
     }); 
   }
