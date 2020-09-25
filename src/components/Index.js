@@ -64,9 +64,7 @@ export class Index extends Component {
       title: val
     }, () => {
       localStorage.setItem('sidebarRight', this.state.title );
-        if(this.state.title === 'Camera Info') {
-          localStorage.removeItem('commentInfoContent');
-          localStorage.removeItem('shareInfoContent');
+        
             localStorage.setItem('cameraInfoContent', 
             JSON.stringify({
               title: curr.title,
@@ -74,9 +72,8 @@ export class Index extends Component {
               camera: curr.camera,
               imagePath: curr.imagePath
             }))
-        }
-    }); 
-  }
+        }); 
+    }
 
   handleSideBarClick = (e, id, val) => {
     const activeState = localStorage.setItem('active', val);
