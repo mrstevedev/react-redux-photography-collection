@@ -28,7 +28,12 @@ export class Index extends Component {
     AOS.init();
     console.log('AOS Init');
     console.log('call store.getState(): ', store.getState().photos);
-    fetch(`${ REACT_APP_API_URL }/photo`)
+    fetch(`${ REACT_APP_API_URL }/photo`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({ photos: data })
