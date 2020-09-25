@@ -214,13 +214,13 @@ nav ul li a {
 }
 .vertical ul a li {
   color: #fff;
-  font-size: 0.69rem;
+  font-size: 0.62rem;
   text-decoration: none;
-  padding: 0.3rem 1rem!important;;
+  padding: 0.3rem 1rem!important;
   transition: 0.22s ease-in-out;
   position: relative;
-  letter-spacing: .04rem;
-  text-transform: capitalize;
+  letter-spacing: .043rem;
+  text-transform: unset;
   font-weight: 400;
 }
 
