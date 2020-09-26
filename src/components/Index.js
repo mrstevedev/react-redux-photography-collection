@@ -8,6 +8,7 @@ import { store } from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import photos from "../../api/photos";
+import axios from 'axios';
 
 export class Index extends Component {
   constructor(props) {
@@ -26,17 +27,10 @@ export class Index extends Component {
     AOS.init();
     console.log('AOS Init');
     console.log('call store.getState(): ', store.getState().photos);
-    fetch(`${ REACT_APP_API_URL }/photo`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-      .then(res => res.json())
+    axios.get( `${ REACT_APP_API_URL }/photo`)
       .then(data => {
-        this.setState({ photos: data })
-      })
-
+        this.setState({ photos: data.data })
+    })
     const activeState = localStorage.getItem('active');
     this.setState({ active: activeState });
     const listItem = document.querySelector(".photo-list li");
