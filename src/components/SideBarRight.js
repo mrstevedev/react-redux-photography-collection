@@ -27,7 +27,7 @@ const SideBarRight = (props) => {
                 </tr>
                 <tr>
                     <th>Download</th>
-                    <td><a style={{ color: '#a9a9ff' }} href={ cameraInfo.imagePath } download={ cameraInfo.title }><i class="fas fa-cloud-download-alt" style={{ fontSize: '0.7rem' }}></i> { cameraInfo.title }</a></td>
+                    <td><a style={{ color: '#a9a9ff' }} href={ cameraInfo.imagePath } download={ cameraInfo.title }><i className="fas fa-cloud-download-alt" style={{ fontSize: '0.7rem' }}></i> { cameraInfo.title }</a></td>
                 </tr>
                 </tbody>     
               </table>
