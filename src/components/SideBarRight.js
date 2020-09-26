@@ -15,15 +15,15 @@ const SideBarRight = (props) => {
                 <tbody>                    
                 <tr>
                     <th>Photo Title</th>
-                    <td><i class="fas fa-heading" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.title ? props.currentPhoto.title : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.title : '' }</td>
+                    <td><i className="fas fa-heading" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.title ? props.currentPhoto.title : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.title : '' }</td>
                 </tr>
                 <tr>
                     <th>Location</th>
-                    <td><i class="fas fa-map-marker-alt" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.location ? props.currentPhoto.location : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.location : '' }</td>
+                    <td><i className="fas fa-map-marker-alt" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.location ? props.currentPhoto.location : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.location : '' }</td>
                 </tr>
                 <tr>
                     <th>Camera</th>
-                    <td><i class="fas fa-camera" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.camera ? props.currentPhoto.camera : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.camera : '' }</td>
+                    <td><i className="fas fa-camera" style={{ fontSize: '0.7rem' }}></i> { props.currentPhoto.camera ? props.currentPhoto.camera : JSON.parse(localStorage.getItem('cameraInfoContent')) !== null ? cameraInfo.camera : '' }</td>
                 </tr>
                 <tr>
                     <th>Download</th>
