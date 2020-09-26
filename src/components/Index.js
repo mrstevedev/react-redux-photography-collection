@@ -8,8 +8,6 @@ import { store } from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import photos from "../../api/photos";
-import CameraInfo from './CameraInfo';
-
 
 export class Index extends Component {
   constructor(props) {
