@@ -3,6 +3,7 @@ import Index from "./components/Index";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 import Admin from './admin/Index';
+import Dashboard from './admin/Dashboard';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contact from "./components/Contact";
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/About" component={About} />
           <Route path="/Contact" component={Contact} />
           <Route path="/Admin" component={Admin} />
+          <Route path="/Dashboard" component={Dashboard} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
