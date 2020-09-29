@@ -56,15 +56,7 @@ export class Index extends Component {
       title: val
     }, () => {
       localStorage.setItem('sidebarRight', this.state.title );
-        
-            localStorage.setItem('cameraInfoContent', 
-            JSON.stringify({
-              title: curr.title,
-              location: curr.location,
-              camera: curr.camera,
-              imagePath: curr.imagePath
-            }))
-        }); 
+      }); 
     }
 
   handleSideBarClick = (e, id, val) => {
