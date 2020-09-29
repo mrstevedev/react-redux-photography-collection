@@ -185,7 +185,7 @@ img {
     }
     &.active {
       background: rgb(169, 169, 255);
-      color: #411f7d;
+      color: #000;
     }
   }
 }
@@ -271,6 +271,8 @@ footer {
 td {
   padding: 1rem 0px;
   font-weight: 100;
+  text-align: left;
+  width: 65%;
 }
 th {
   color: #a2a2a2;
@@ -545,6 +547,28 @@ section.vert footer {
     padding: 2rem;
     display: block;
   }
+  .admin-container {
+    padding: 0 2rem;
+    width: 100% !important;
+    input {
+      display: block;
+      width: 100%;
+      margin: 4px 0;
+      height: 28px;
+    }
+    button {
+      width: 100%;
+      margin: 0;
+      padding: 0.4rem 1rem;
+    }
+
+    .admin-signIn__error {
+      font-size: 0.7rem;
+      position: absolute;
+      top: 20rem;
+      text-transform: capitalize;
+    }
+  }
 }
 
 ::placeholder {
@@ -588,7 +612,8 @@ section.vert footer {
   }
   input {
     border: none;
-    background: #efefef;
+    // background: #efefef;
+    background: #fff;
     margin: 0 2px;
     height: 24px;
     text-indent: 8px;
@@ -596,28 +621,46 @@ section.vert footer {
     color: #424242;
     font-weight: bold;
     outline: none;
-    /* border-bottom: solid 2px #ff9c9c; */
+    border: solid 1px;
   }
   button {
-    background: #000;
-    color: #fff;
-    padding: 0.3rem 1rem;
+    background: #fff;
+    color: #000;
+    padding: 0.23rem 1rem;
     outline: none;
-    border: none;
-    margin: 0 1px;
+    border: solid 1px #000;
+    margin: 0 3px;
     border-radius: 2px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
     font-size: 0.8rem;
-    transition: .22s ease-in-out;
+    transition: 0.12s ease-in-out;
 
-    &:hover {
-      background: #424242
+    &:hover,
+    &:focus,
+    &:active {
+      background: #000;
+      color: #fff;
     }
   }
 
   .error {
-    background:#fdcaca;
+    background: #fdcaca;
+  }
+
+  .admin-signIn__error {
+    margin: 1rem 0;
+    font-size: 0.8rem;
+    text-transform: none;
+  }
+
+  .admin-signIn__description {
+    margin: 2rem 0;
+    font-size: 14px;
+
+    p {
+      text-transform: none;
+    }
   }
 }
