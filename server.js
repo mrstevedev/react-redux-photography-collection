@@ -6,15 +6,32 @@ const creds = require('./config');
 const photos = require('./api/photos.json');
 const dotenv = require('dotenv');
 const path = require('path');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const connectDB = require('./config/db');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 // Load env vars
-dotenv.config({ path: './.env' });
+dotenv.config({ path: './config/config.env' });
+
+connectDB();
 
 const app = express();
 
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport config 
+require('./config/passport')(passport);
+
+app.use(morgan('dev'));
+app.use(helmet());
 
 app.use(cors({
   origin: 'http://localhost:9000',
@@ -49,6 +66,20 @@ app.get('/', (req, res) => {
 
 router.get('/api/photo', (req, res) => {
   res.json(photos)
+})
+
+router.post('/signin', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if(err) throw err;
+    if(!user) res.json({ message: 'Username and or password incorrect' , user: null })
+    else {
+      req.logIn(user, err => {
+        if(err) throw err;
+
+        res.status(200).json({ message: 'Successfully Authenticated', user: req.user })
+      })
+    }
+  })(req, res, next)
 })
 
 router.post('/success', (req, res) => {
