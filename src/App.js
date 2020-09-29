@@ -7,20 +7,23 @@ import Dashboard from './admin/Dashboard';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contact from "./components/Contact";
+import ProtectedRoute from "./admin/ProtectedRoute";
 
 class App extends Component {
-  componentDidMount() {
-    
-  }
   render() {
     return (
       <Router>
         <Switch>
           <Route exact path="/" component={Index} />
-          <Route path="/About" component={About} />
-          <Route path="/Contact" component={Contact} />
-          <Route path="/Admin" component={Admin} />
-          <Route path="/Dashboard" component={Dashboard} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route exact path="/admin" component={Admin} />
+          {/* <Route exact path="/admin/dashboard" component={Dashboard} /> */}
+          <ProtectedRoute
+            exact
+            path="/admin/dashboard"
+            component={Dashboard}
+          />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
