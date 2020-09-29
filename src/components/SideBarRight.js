@@ -32,6 +32,14 @@ const SideBarRight = (props) => {
                 </tbody>     
               </table>
           </div>
+          <div>
+          {/* <h3><i className="fas fa-info-circle"></i>Disclaimer</h3> */}
+            <p style={{ 
+                  color: '#fff',
+                  textTransform: 'none',
+                  fontWeight: '100', fontSize: '0.8rem' }}>
+                  Photos are free to use under the creative commons license. Please give credit if you use any of the photos in one of your projects.</p>
+          </div>
         </div>
       </aside>
     );
