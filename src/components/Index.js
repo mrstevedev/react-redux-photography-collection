@@ -10,6 +10,7 @@ import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import photos from "../../api/photos";
 import axios from 'axios';
+import { session } from "passport";
 
 export class Index extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ export class Index extends Component {
       active: '',
       showSideBarRight: false,
       photos: [],
-      currentPhoto: {}
+      currentPhoto: {},
+      showCookieNotification: false
     }
   }
   componentDidMount() {
@@ -38,6 +40,14 @@ export class Index extends Component {
 
     if(localStorage.getItem('active') === null ){
       listItem.classList.add("active");
+    }
+
+    if (document.cookie.split(';').some((item) => item.includes('spp_notification_accept=true'))) {
+      console.log('The cookie "spp_notification_accept" has "true" for value')
+    } else {
+      setTimeout(() => {
+        this.setState({ showCookieNotification: true });
+      }, 5000);
     }
   }
 
@@ -101,6 +111,11 @@ export class Index extends Component {
 
   handleCloseCookieModal = (e) => {
     console.log('Close cookie notification modal');
+    this.setState({ showCookieNotification: false }, () => {
+      // Set a cookie when the 'accept' button is clicked
+      // https://www.npmjs.com/package/react-cookie
+      document.cookie="spp_notification_accept=true;";
+    });
   }
 
   componentDidCatch() {
@@ -135,8 +150,9 @@ export class Index extends Component {
           <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
           {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
         </div>
-        <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
-        {/* <Footer /> */}
+        { this.state.showCookieNotification === true ? (
+          <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
+        ) : null }
        <BackToTop />
       </Fragment>
     );
