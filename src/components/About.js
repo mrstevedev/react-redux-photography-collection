@@ -17,9 +17,7 @@ const About = (props) => {
                     <footer></footer>
                 </section>
                 <section className="about"> 
-                <Link className="goback" to="#!" onClick={handleLink}>
-            <i className="fas fa-angle-double-left"></i>
-            </Link>           
+                       
                 <p className="about-text">
                     Personal showcase of photos I have taken over the years. Some of the photos were taken with a smartphone that I had that was branded and sold at a 
                     communications company I had worked at as a Full Stack Developer in addition to a Nikon D3300.
