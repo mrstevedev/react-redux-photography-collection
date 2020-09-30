@@ -4,6 +4,7 @@ import Sidebar from '../containers/Sidebar';
 import BackToTop from './BackToTop';
 import AOS from "aos";
 import SideBarRight from "./SideBarRight";
+import CookiesNotification from './CookiesNotification';
 import { store } from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -98,6 +99,10 @@ export class Index extends Component {
     console.log('handle tab click');
   }
 
+  handleCloseCookieModal = (e) => {
+    console.log('Close cookie notification modal');
+  }
+
   componentDidCatch() {
     console.log("//-----------ComponentDidCatch Ran");
   }
@@ -130,6 +135,7 @@ export class Index extends Component {
           <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
           {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
         </div>
+        <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
         {/* <Footer /> */}
        <BackToTop />
       </Fragment>
