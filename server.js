@@ -75,8 +75,14 @@ router.post('/signin', (req, res, next) => {
     else {
       req.logIn(user, err => {
         if(err) throw err;
-
-        res.status(200).json({ message: 'Successfully Authenticated', user: req.user })
+        jwt.sign({ user }, 'secret', { expiresIn: '1h' }, (err, token) => {
+          res.status(200)
+            .json({ 
+              message: 'Successfully Authenticated',
+              user: req.user,
+              jwt: token
+          })
+        })
       })
     }
   })(req, res, next)
