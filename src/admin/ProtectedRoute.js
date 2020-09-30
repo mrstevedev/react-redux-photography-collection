@@ -6,7 +6,9 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     <Route 
       { ...rest }
       render={(props) =>  
-       (
+        sessionStorage.token ? (
+          <Component { ...props } />
+        ) : (
           <Redirect to="/admin" />
         )
       }
