@@ -8,10 +8,10 @@ const SideBarRight = (props) => {
         <div className="camera-info-close"><i className="fas fa-times" onClick={props.handleClose}></i></div>
         <div className="camera-info">
           <div className="camera-info-header">
-            <h3><i className="fas fa-info-circle"></i>Camera Info</h3>
+            <h3><i className="fas fa-info-circle"></i>Camera Info // Rating <i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i> 5/5</h3>
           </div>
           <div className="camera-info-info-body">
-              <table style={{ width: '100%' }}>
+              <table style={{ width: '100%', marginBottom: '1rem' }}>
                 <tbody>                    
                 <tr>
                     <th>Photo Title</th>
@@ -28,7 +28,7 @@ const SideBarRight = (props) => {
                 <tr>
                     <th>Download</th>
                     <td><a style={{ color: '#a9a9ff' }} href={ cameraInfo.imagePath } download={ cameraInfo.title }><i className="fas fa-cloud-download-alt" style={{ fontSize: '0.7rem' }}></i> { cameraInfo.title }</a></td>
-                </tr>
+                </tr>                
                 </tbody>     
               </table>
           </div>
@@ -36,7 +36,7 @@ const SideBarRight = (props) => {
           {/* <h3><i className="fas fa-info-circle"></i>Disclaimer</h3> */}
             <p style={{ 
                   color: '#fff',
-                  textTransform: 'none',
+                  fontFamily: 'helveticaneue', textTransform: 'none',
                   fontWeight: '100', fontSize: '0.8rem' }}>
                   Photos are free to use under the creative commons license. Please give credit if you use any of the photos in one of your projects.</p>
           </div>
