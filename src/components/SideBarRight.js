@@ -8,7 +8,7 @@ const SideBarRight = (props) => {
         <div className="camera-info-close"><i className="fas fa-times" onClick={props.handleClose}></i></div>
         <div className="camera-info">
           <div className="camera-info-header">
-            <h3><i className="fas fa-info-circle"></i>Camera Info // Rating <i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i><i class="fas fa-star" style={{ fontSize: '0.69rem' }}></i> 5/5</h3>
+            <h3><i className="fas fa-info-circle"></i>Camera Info</h3>
           </div>
           <div className="camera-info-info-body">
               <table style={{ width: '100%', marginBottom: '1rem' }}>
