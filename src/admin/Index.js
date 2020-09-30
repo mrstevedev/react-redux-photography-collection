@@ -9,7 +9,9 @@ class Admin extends React.Component {
             username: '',
             password: '',
             errorUsername: false,
-            errorPassword: false
+            errorPassword: false,
+            user: {},
+            jwt: ''
         }
     }
 
@@ -48,9 +50,13 @@ class Admin extends React.Component {
                 this.setState({ error: res.data.message })
             }
             if(res.data.user) {
-                console.log(res.data.user)
-                this.setState({ user: res.data.user })
-                this.props.history.push('/dashboard', { message: 'You are now logged in', user: this.state.user } );
+                this.setState({ user: res.data.user, jwt: res.data.jwt }, () => {
+                    sessionStorage.setItem('token', this.state.jwt)
+                    this.props.history.push('/admin/dashboard', { 
+                        message: 'You are now logged in',
+                        user: this.state.user
+                    });
+                })
             }
         })
         .catch(err => console.log(err))
