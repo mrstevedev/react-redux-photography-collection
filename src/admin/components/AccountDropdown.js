@@ -3,20 +3,81 @@ import AccountToggle from './AccountToggle';
 import { Link } from 'react-router-dom';
 
 const AccountDropdown = (props) => {
-    console.log('props in dropdown', props)
+    console.log('props in dropdown', props);
+    const shortEmail = props.user !== undefined ? props.user.email.replace(/(.{18})..+/, "$1…") : '';
+
     return (
-        <div className="admin__dashboard-account-dropdown">
+        <div className="animated animatedFadeInUp admin__dashboard-account-dropdown" style={{  opacity: '0',
+            position: 'absolute',
+            background: '#fff',
+            boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.05)',
+            width: '200px',
+            top: '3.6rem',
+            right: '-1rem',
+            padding: '0',
+            borderBottomRightRadius: '6px',
+            borderBottomLeftRadius: '6px',
+            transition: '0.12s ease-in-out' }}>
             <ul className="admin__dashboard-account-list">
                 <li>
-                    { props.user.username }
-                    <div>
-                        <p style={{ fontSize: '0.7rem', color: '#7d7d7d' }}>{ props.user.email }</p>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
+                        <i className="fas fa-user-shield"></i>
                     </div>
+                <div>
+                    <p>{ props.user ? props.user.username : '' }</p>
+                    <p style={{ fontSize: '0.7rem', color: '#b9b9b9' }} title={ props.user.email }>{ props.user !== undefined ? shortEmail : '' }</p>
+                </div>
+                </div>
                 </li>
-                <Link to="/admin/account"><li>Account</li></Link>
-                <a href=""><li>Something</li></a>
-                <a href=""><li>Something else</li></a>
-                <a href="" onClick={props.handleLogout}><li>Sign Out</li></a>
+                <Link to={{
+                    pathname: '/admin/account',
+                    state: { user: props.user } 
+                }}>
+                <li>                   
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
+                            <i className="fas fa-user-circle"></i>
+                        </div>
+                        <p>Account</p>
+                    </div>
+                    
+                    </li></Link>
+                <Link to={{
+                    pathname: '/admin/dashboard',
+                    state: { user: props.user }
+                }}>
+                    <li>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
+                        <i className="fas fa-tachometer-alt"></i>
+                        </div> 
+                        Dashboard
+                        </div>
+                    </li></Link>
+                <Link to={{
+                    pathname: '/admin/dashboard',
+                    state: { user: props.user }
+                }}>
+                    <li>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
+                        <i className="fas fa-box-open"></i>
+                        </div>
+                        Something else
+                    </div>
+                    </li>
+                </Link>
+                <Link to="#" onClick={props.handleLogout}>
+                    <li>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
+                        <i className="fas fa-sign-out-alt"></i> 
+                        </div>
+                        Sign Out
+                    </div>
+                    </li>
+                    </Link>
             </ul>
         </div>
     )
