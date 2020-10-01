@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const render = () => {
     ReactDOM.render(
-    <BrowserRouter history={history}>
+    <BrowserRouter>
         <App />
     </BrowserRouter>
     , document.getElementById('app'));
