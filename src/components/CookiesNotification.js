@@ -6,7 +6,7 @@ export default function CookiesNotification(props) {
             <header><i className="fas fa-times close" onClick={props.handleCloseCookieModal}></i></header>
             <p>This site uses cookies to provide a great user experience. <br /> By using this site, you agree to our use of cookies.</p>
             <button className="cookies__notification-acceptBtn" onClick={props.handleCloseCookieModal}>Accept</button>
-            <button className="cookies__notification-moreBtn" href="/about-cookies">More</button>
+            <button className="cookies__notification-moreBtn" href="/about-cookies">Read More</button>
         </div>
     );
 }
