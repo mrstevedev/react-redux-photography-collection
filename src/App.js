@@ -4,6 +4,7 @@ import About from "./components/About";
 import NotFound from "./components/NotFound";
 import Admin from './admin/Index';
 import Dashboard from './admin/Dashboard';
+import Account from './admin/Account';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contact from "./components/Contact";
@@ -18,11 +19,15 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route exact path="/admin" component={Admin} />
-          {/* <Route exact path="/admin/dashboard" component={Dashboard} /> */}
           <ProtectedRoute
             exact
             path="/admin/dashboard"
             component={Dashboard}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/account"
+            component={Account}
           />
           <Route path="*" component={NotFound} />
         </Switch>
