@@ -26,11 +26,15 @@ export class Index extends Component {
   }
   componentDidMount() {
     const { REACT_APP_API_URL } = process.env;
-    console.log("//-----------ComponentDidMount Ran");
+    // console.log("//-----------ComponentDidMount Ran");
     AOS.init();
-    console.log('AOS Init');
+    // console.log('AOS Init');
     // console.log('call store.getState(): ', store.getState().photos);
-    axios.get( `${ REACT_APP_API_URL }/photo`)
+    axios.get( `${ REACT_APP_API_URL }/photo`, {
+      headers: {
+        'requestapi': "123"
+      }
+    })
       .then(data => {
         this.setState({ photos: data.data })
     })
