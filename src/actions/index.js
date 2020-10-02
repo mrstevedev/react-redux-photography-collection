@@ -1,6 +1,6 @@
-export function setInfo(photo) {
+export function setPhoto(id) {
     return {
         type: 'SET_PHOTO',
-        photo: photo
+        id: id
     }
 }
