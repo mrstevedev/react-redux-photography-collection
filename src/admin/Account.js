@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import axios from 'axios';
 
 export default class Account extends Component {
     constructor(props) {
@@ -12,6 +13,14 @@ export default class Account extends Component {
             errorLocation: false,
         }
     }
+
+    handleFileChange = (e) => {
+        const file_input = document.getElementById('fileInput');
+        const file_name = file_input.files[0].name;
+    
+        console.log(file_name);
+        this.setState({ fileName: file_name })
+      }
 
     handleChange = (e) => {
         if(this.state.email !== '') {
@@ -27,6 +36,7 @@ export default class Account extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const { REACT_APP_API_URL } = process.env;
 
         if(this.state.email === '') {
             this.setState({ errorEmail: true });
@@ -34,6 +44,26 @@ export default class Account extends Component {
 
         if(this.state.location === '') {
             this.setState({ errorLocation: true });
+        }
+        else {
+            axios({
+                method: 'POST',
+                url: `${ REACT_APP_API_URL }/user`,
+                data: {
+                    email: this.state.email,
+                    location: this.state.location
+                },
+                headers: {
+                    "Authorization": `Bearer ${ sessionStorage.getItem('token') }`
+                }
+            }).then(res => {
+                console.log(res)
+                this.setState({ 
+                    email: res.data.email, 
+                    location: res.data.location 
+                })
+            })
+            .catch(err => console.log(err))
         }
     }
     
@@ -58,7 +88,7 @@ export default class Account extends Component {
         return (
             <div style={{ height: '100vh' }}>
                 <div className="admin__page-container" style={{ background: '#fff', height: '100vh', width: '100%', margin: '0 auto', textTransform: 'none', fontFamily: 'helveticaneue', fontSize: '0.8rem' }}>
-                <Header user={ this.props.location.state.user } handleAccountToggle={ this.handleAccountToggle } handleLogout={ this.handleLogout } />
+                <Header user={ this.props.location.state.user ? this.props.location.state.user : '' } handleAccountToggle={ this.handleAccountToggle } handleLogout={ this.handleLogout } />
                 <main>
                     <form>
                         <h4 style={{ textTransform: 'uppercase', fontSize: '0.7rem', margin: '1rem 0' }}>My Account</h4>
@@ -78,11 +108,15 @@ export default class Account extends Component {
                         </label>
                         <label>Location
                         <input type="text" 
-                            placeholder="ex. San Diego, CA" 
+                            placeholder={ this.props.location.state.user.location } 
                             onChange={this.handleChange} 
                             name="location" 
                             className={this.state.errorLocation === true ? "error" : ""} />
-                        </label>                        
+                        </label>
+                        <label>Update avatar <i className="fas fa-folder-plus"></i>
+                            <input type="file" id="fileInput" onChange={this.handleFileChange} />
+                            <span>{ this.state.fileName }</span>
+                        </label>                    
                         <button onClick={this.handleSubmit}>Submit <i className="fas fa-paper-plane" style={{ fontSize: '0.81rem' }}></i></button>
                     </form>
                 </main>
