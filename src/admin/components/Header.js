@@ -11,7 +11,7 @@ const Header = (props) => {
             alignItems: 'center', boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.05)' }}>
             <img src="../../public/img/logo.svg" className="logo" width="25" height="25" />
             <div className="admin__dashboard-account">
-                <AccountToggle handleAccountToggle={props.handleAccountToggle} />
+                <AccountToggle user={ props.user } handleAccountToggle={props.handleAccountToggle} />
                 <AccountDropdown user={ props.user } handleLogout={props.handleLogout} />
             </div>
         </header>
