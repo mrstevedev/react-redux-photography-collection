@@ -29,7 +29,7 @@ export class Index extends Component {
     console.log("//-----------ComponentDidMount Ran");
     AOS.init();
     console.log('AOS Init');
-    console.log('call store.getState(): ', store.getState().photos);
+    // console.log('call store.getState(): ', store.getState().photos);
     axios.get( `${ REACT_APP_API_URL }/photo`)
       .then(data => {
         this.setState({ photos: data.data })
@@ -129,7 +129,7 @@ export class Index extends Component {
             <Sidebar
               currentPhoto={this.props.currentPhoto}
               photos={this.state.photos}
-              imageSrc={store.getState().imageSrc}
+              // imageSrc={store.getState().imageSrc}
               active={this.state.active} 
               handleSideBarClick={this.handleSideBarClick} 
               handlePhotoDownload={this.handlePhotoDownload}
