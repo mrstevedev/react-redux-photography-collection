@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { store } from "../store";
-import { setInfo } from "../actions";
+import { setPhoto } from "../actions";
 
 const Sidebar = (props) => {
   let arr = Array.from(props.photos);
