@@ -11,6 +11,12 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String
+    },
+    location: {
+        type: String
+    },
+    avatarIcon: {
+        type: String
     }
 });
 
