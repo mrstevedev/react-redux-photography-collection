@@ -11,6 +11,7 @@ const morgan = require('morgan');
 const connectDB = require('./config/db');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const User = require('./models/User');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -64,9 +65,43 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/api/photo', (req, res) => {
+router.get('/api/photo', authenticateGetPhotos, (req, res) => {
   res.json(photos)
 })
+
+router.post('/api/user', authenticateToken, (req, res) => {
+  const { email, location, avatarIcon } = req.body;
+  console.log(avatarIcon);
+  User.updateOne({ 
+    email: email, 
+    location: location,
+    avatarIcon: avatarIcon
+  }).then(response => res.json({ message: 'successfully updated', email, location, avatarIcon }) )
+  .catch(err => console.log(err));
+});
+
+function authenticateGetPhotos(req, res, next) {
+  if (req.headers['requestapi']) {
+     // custom header exists, then call next() to pass to the next function
+     next();
+  } else {
+    res.sendStatus(403);
+  }
+}
+
+// Middleware function to protect/authenticate routes from requests
+// Not containing or containing a JWT token
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+  if(token == null) return res.sendStatus(401)
+
+  jwt.verify(token, 'secret', (err, user) => {
+    if(err) return res.sedStatus(403)
+    req.user = user
+    next()
+  })
+}
 
 router.post('/signin', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
