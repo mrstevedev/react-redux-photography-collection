@@ -50,9 +50,9 @@ const AccountDropdown = (props) => {
                     <li>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
-                        <i className="fas fa-tachometer-alt"></i>
+                        <i className="fas fa-box-open"></i>
                         </div> 
-                        Dashboard
+                        Upload Photo
                         </div>
                     </li></Link>
                 <Link to={{
@@ -62,9 +62,9 @@ const AccountDropdown = (props) => {
                     <li>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
-                        <i className="fas fa-box-open"></i>
+                        <i className="fas fa-tachometer-alt"></i>
                         </div>
-                        Something else
+                        Dashboard
                     </div>
                     </li>
                 </Link>
