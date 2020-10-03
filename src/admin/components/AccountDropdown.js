@@ -50,7 +50,7 @@ const AccountDropdown = (props) => {
                     <li>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
-                        <i className="fas fa-box-open"></i>
+                    <i className="fas fa-cloud-upload-alt"></i>
                         </div> 
                         Upload Photo
                         </div>
