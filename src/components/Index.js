@@ -30,21 +30,24 @@ export class Index extends Component {
     AOS.init();
     // console.log('AOS Init');
     // console.log('call store.getState(): ', store.getState().photos);
-    axios.get( `${ REACT_APP_API_URL }/photo`, {
+    axios.get( `${ REACT_APP_API_URL }/photos.json`, {
       headers: {
-        'requestapi': "123"
+        'requestapi': "123",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
     })
       .then(data => {
         this.setState({ photos: data.data })
-    })
-    const activeState = localStorage.getItem('active');
-    this.setState({ active: activeState });
-    const listItem = document.querySelector(".photo-list li");
-
-    if(localStorage.getItem('active') === null ){
-      listItem.classList.add("active");
-    }
+        const activeState = localStorage.getItem('active');
+        this.setState({ active: activeState });
+        const listItem = document.querySelector(".photo-list li");
+    
+        if(localStorage.getItem('active') === null ){
+          listItem.classList.add("active");
+        }
+    }).catch(err => console.log(err))
+   
 
     if (document.cookie.split(';').some((item) => item.includes('spp_notification_accept=true'))) {
       console.log('The cookie "spp_notification_accept" has "true" for value')
