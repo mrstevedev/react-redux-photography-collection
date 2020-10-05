@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const AccountDropdown = (props) => {
     console.log('props in dropdown', props);
-    const shortEmail = props.user !== undefined ? props.user.email.replace(/(.{18})..+/, "$1…") : '';
+    // const shortEmail = props.user !== undefined ? props.user.email.replace(/(.{18})..+/, "$1…") : '';
 
     return (
         <div className="animated animatedFadeInUp admin__dashboard-account-dropdown" style={{  opacity: '0',
@@ -13,7 +13,7 @@ const AccountDropdown = (props) => {
             boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.05)',
             width: '200px',
             top: '3.6rem',
-            right: '-1rem',
+            right: '-1.6rem',
             padding: '0',
             borderBottomRightRadius: '6px',
             borderBottomLeftRadius: '6px',
@@ -24,9 +24,9 @@ const AccountDropdown = (props) => {
                     <div style={{ width: '30px',  height: '30px', display: 'flex', alignItems: 'center' }}>
                         <i className="fas fa-user-shield"></i>
                     </div>
-                <div>
+                <div style={{ overflow: 'hidden' }}>
                     <p>{ props.user ? props.user.username : '' }</p>
-                    <p style={{ fontSize: '0.7rem', color: '#b9b9b9' }} title={ props.user.email }>{ props.user !== undefined ? shortEmail : '' }</p>
+                    <p style={{ fontSize: '0.7rem', color: '#b9b9b9', overflow: 'hidden', textOverflow: 'ellipsis' }} title={ props.user.email }>{ props.user !== undefined ? props.user.email : '' }</p>
                 </div>
                 </div>
                 </li>
@@ -56,7 +56,7 @@ const AccountDropdown = (props) => {
                         </div>
                     </li></Link>
                 <Link to={{
-                    pathname: '/admin/dashboard',
+                    pathname: '/admin/dashboardmain',
                     state: { user: props.user }
                 }}>
                     <li>
