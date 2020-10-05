@@ -4,6 +4,7 @@ import About from "./components/About";
 import NotFound from "./components/NotFound";
 import Admin from './admin/Index';
 import Dashboard from './admin/Dashboard';
+import DashboardMain from './admin/DashboardMain';
 import Account from './admin/Account';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -28,6 +29,11 @@ class App extends Component {
             exact
             path="/admin/account"
             component={Account}
+          />
+          <ProtectedRoute 
+            exact 
+            path="/admin/dashboardmain" 
+            component={DashboardMain} 
           />
           <Route path="*" component={NotFound} />
         </Switch>
