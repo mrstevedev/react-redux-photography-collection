@@ -3,7 +3,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const creds = require('./config');
-const photos = require('./api/photos.json');
+const api = require('./routes/routes');
 const dotenv = require('dotenv');
 const path = require('path');
 const helmet = require('helmet');
@@ -12,6 +12,7 @@ const connectDB = require('./config/db');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
+const multer = require('multer');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -21,8 +22,10 @@ connectDB();
 const app = express();
 
 // add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "build")));
+
+// Add avatar dir/
+app.use('./public/img/avatar', express.static('avatar'));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -35,39 +38,16 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 app.use(cors({
-  origin: 'http://localhost:9000',
+  origin: 'http://localhost:4000',
   credentials: true
 }))
 app.use(express.json())
-app.use('/contact', router)
 app.use('/', router)
+app.use('/api', api)
 
-let transport = {
-    host: 'smtp.gmail.com', // Don’t forget to replace with the SMTP host of your provider
-    port: 587,
-    auth: {
-    user: creds.USER,
-    pass: creds.PASS
-  }
-}
-
-let transporter = nodemailer.createTransport(transport)
-
-transporter.verify((error, success) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Server is ready to take messages');
-  }
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
-})
-
-router.get('/api/photo', authenticateGetPhotos, (req, res) => {
-  res.json(photos)
-})
+// router.use('/api/photo', authenticateGetPhotos, (req, res) => {
+//   res.status(200).json(api)
+// })
 
 router.post('/api/user', authenticateToken, (req, res) => {
   const { email, location, avatarIcon } = req.body;
@@ -78,6 +58,31 @@ router.post('/api/user', authenticateToken, (req, res) => {
     avatarIcon: avatarIcon
   }).then(response => res.json({ message: 'successfully updated', email, location, avatarIcon }) )
   .catch(err => console.log(err));
+});
+
+router.post('/signin', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if(err) throw err;
+    if(!user) res.json({ message: 'Username and or password incorrect' , user: null })
+    else {
+      req.logIn(user, err => {
+        if(err) throw err;
+        jwt.sign({ user }, 'secret', { expiresIn: '1h' }, (err, token) => {
+          res.status(200)
+            .json({ 
+              message: 'Successfully Authenticated',
+              user: req.user,
+              jwt: token
+          })
+        })
+      })
+    }
+  })(req, res, next)
+})
+
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 function authenticateGetPhotos(req, res, next) {
@@ -103,25 +108,24 @@ function authenticateToken(req, res, next) {
   })
 }
 
-router.post('/signin', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if(err) throw err;
-    if(!user) res.json({ message: 'Username and or password incorrect' , user: null })
-    else {
-      req.logIn(user, err => {
-        if(err) throw err;
-        jwt.sign({ user }, 'secret', { expiresIn: '1h' }, (err, token) => {
-          res.status(200)
-            .json({ 
-              message: 'Successfully Authenticated',
-              user: req.user,
-              jwt: token
-          })
-        })
-      })
-    }
-  })(req, res, next)
-})
+let transport = {
+  host: 'smtp.gmail.com', // Don’t forget to replace with the SMTP host of your provider
+  port: 587,
+  auth: {
+  user: creds.USER,
+  pass: creds.PASS
+}
+}
+
+let transporter = nodemailer.createTransport(transport)
+
+transporter.verify((error, success) => {
+if (error) {
+  console.log(error);
+} else {
+  console.log('Server is ready to take messages');
+}
+});
 
 router.post('/success', (req, res) => {
   let name = req.body.name;
@@ -163,10 +167,6 @@ router.post('/success', (req, res) => {
   })
   res.send('success');
 })
-
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-});
 
 const PORT = process.env.PORT || 4000;
 
