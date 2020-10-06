@@ -15,7 +15,7 @@ import { session } from "passport";
 export class Index extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
       active: '',
       showSideBarRight: false,
@@ -59,11 +59,11 @@ export class Index extends Component {
   }
 
   handlePhotoDownload = e => {
-    console.log(e);
+    // console.log(e);
   }
 
   handleInputSelect = (e) => {
-    console.log(e)
+    // console.log(e)
   }
 
   handleRightSideBarClick = (e, curr, val) => {
@@ -95,7 +95,7 @@ export class Index extends Component {
       })
     }
     this.setState({ active: getActiveState });
-    console.log('id: ', id)
+    // console.log('id: ', id)
     if(activeNode){
       activeNode.classList.remove('active');
     }
@@ -104,7 +104,7 @@ export class Index extends Component {
   }
 
   handleClose = e => {
-    console.log('handleClose Ran');
+    // console.log('handleClose Ran');
     localStorage.removeItem('sidebarRight');
     this.setState({
       showSideBarRight: false
@@ -113,11 +113,11 @@ export class Index extends Component {
 
 
   handleTabClick = e => {
-    console.log('handle tab click');
+    // console.log('handle tab click');
   }
 
   handleCloseCookieModal = (e) => {
-    console.log('Close cookie notification modal');
+    // console.log('Close cookie notification modal');
     this.setState({ showCookieNotification: false }, () => {
       // Set a cookie when the 'accept' button is clicked
       // https://www.npmjs.com/package/react-cookie
@@ -126,7 +126,7 @@ export class Index extends Component {
   }
 
   componentDidCatch() {
-    console.log("//-----------ComponentDidCatch Ran");
+    // console.log("//-----------ComponentDidCatch Ran");
   }
 
   render() {
