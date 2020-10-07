@@ -148,7 +148,6 @@ export class Index extends Component {
                 currentPhoto={this.state.currentPhoto}
                 handleTabClick={this.handleTabClick}
                 handleClose={this.handleClose}
-                title={this.state.title}
                 showSideBarRight={this.state.showSideBarRight}   
             />
           ): null}
