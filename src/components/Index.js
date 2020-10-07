@@ -8,7 +8,6 @@ import CookiesNotification from './CookiesNotification';
 import { store } from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import photos from "../../api/photos";
 import axios from 'axios';
 import { session } from "passport";
 import Photos from "./Photos";
@@ -31,7 +30,7 @@ export class Index extends Component {
     AOS.init();
     // console.log('AOS Init');
     // console.log('call store.getState(): ', store.getState().photos);
-    axios.get( `${ REACT_APP_API_URL }/photos.json`, {
+    axios.get( `${ REACT_APP_API_URL }/photos`, {
       headers: {
         'requestapi': "123",
         'Accept': 'application/json',
