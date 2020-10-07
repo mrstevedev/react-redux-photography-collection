@@ -11,6 +11,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import photos from "../../api/photos";
 import axios from 'axios';
 import { session } from "passport";
+import Photos from "./Photos";
 
 export class Index extends Component {
   constructor(props) {
@@ -153,9 +154,12 @@ export class Index extends Component {
             />
           ): null}
           
-        <div className="container">         
+        <div className="container desktop">         
           <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
           {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
+        </div>
+        <div className="container mobile">
+          <Photos photos={this.state.photos} />
         </div>
         { this.state.showCookieNotification === true ? (
           <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
