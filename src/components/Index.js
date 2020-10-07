@@ -82,7 +82,7 @@ export class Index extends Component {
     const activeNode = document.querySelector('.active');
     const getActiveState = localStorage.getItem('active');
     if(id) {
-      const currPhoto = photos.find((photo) => photo.id === id)
+      const currPhoto = this.state.photos.find((photo) => photo.id === id)
       this.setState({ currentPhoto: currPhoto }, () => {
         cameraInfoContent: 
         localStorage.setItem('cameraInfoContent', 
