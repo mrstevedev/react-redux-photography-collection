@@ -38,7 +38,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 app.use(cors({
-  origin: 'http://localhost:4000',
+  origin: 'http://localhost:9000',
   credentials: true
 }))
 app.use(express.json())
@@ -85,14 +85,14 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-function authenticateGetPhotos(req, res, next) {
-  if (req.headers['requestapi']) {
-     // custom header exists, then call next() to pass to the next function
-     next();
-  } else {
-    res.sendStatus(403);
-  }
-}
+// module.exports = function authenticateGetPhotos(req, res, next) {
+//   if (req.headers['requestapi']) {
+//      // custom header exists, then call next() to pass to the next function
+//      next();
+//   } else {
+//     res.sendStatus(403);
+//   }
+// }
 
 // Middleware function to protect/authenticate routes from requests
 // Not containing or containing a JWT token
