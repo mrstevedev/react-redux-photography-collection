@@ -4,12 +4,27 @@ import CameraInfo from "./CameraInfo";
 const Photos = (props) => {
   //   const cameraInfo = JSON.parse(localStorage.getItem('cameraInfoContent'));
   let arr = Array.from(props.photos);
-  console.log(arr, "arr in photos");
   return (
     <Fragment>
       {arr.map((photo) => (
         <section key={ photo.id } data-aos="fade" data-aos-delay="30">
-            <img src={ photo.imagePath } />
+            {/* <div className="overlay__info">
+                <div className="overlay__info--close">
+                    <a href="#"><i className="fas fa-times"></i></a>
+                </div>
+                <h4>Camera Info</h4>
+                <div className="overlay__row">
+                    <h4>Title</h4>
+                    <p>{ photo.title }</p>
+                </div>
+                <div className="overlay__row">
+                    <h4>Location</h4>
+                    <p>{ photo.location }</p>
+                </div>           
+            </div>
+            <div className="overlay"><i className="fas fa-info-circle"></i></div>
+                 */}
+                 <img src={ photo.imagePath } />
         </section>
       ))}
     </Fragment>
