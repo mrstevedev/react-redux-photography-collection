@@ -4,7 +4,7 @@ import { setPhoto } from "../actions";
 
 const Sidebar = (props) => {
   let arr = Array.from(props.photos);
-  console.log("props in sidebar::::", props);
+  // console.log("props in sidebar::::", props);
   return (
     <Fragment>
       <aside className="vertical" data-aos="fade-right">
