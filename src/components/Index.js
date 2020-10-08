@@ -22,10 +22,14 @@ export class Index extends Component {
       showSideBarRight: false,
       photos: [],
       currentPhoto: {},
-      showCookieNotification: false
+      showCookieNotification: false,
+      windowWidth: undefined
     }
   }
   componentDidMount() {
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize)
+
     const { REACT_APP_API_URL } = process.env;
     // console.log("//-----------ComponentDidMount Ran");
     AOS.init();
@@ -57,6 +61,11 @@ export class Index extends Component {
       }, 5000);
     }
   }
+
+  handleResize = () => this.setState({
+    windowHeight: window.innerHeight,
+    windowWidth: window.innerWidth
+  });
 
   handlePhotoDownload = e => {
     // console.log(e);
@@ -133,7 +142,8 @@ export class Index extends Component {
     return (
       <Fragment>
           <Header />
-            <Sidebar
+          { this.state.windowWidth >= 1420 ? (
+              <Sidebar
               currentPhoto={this.props.currentPhoto}
               photos={this.state.photos}
               // imageSrc={store.getState().imageSrc}
@@ -142,8 +152,9 @@ export class Index extends Component {
               handlePhotoDownload={this.handlePhotoDownload}
               handleClick={this.handleClick} 
             />
-
-            {this.state.close !== true ? (
+          ) : null }
+          
+            {this.state.windowWidth >= 1420 ? (
               <SideBarRight
                 currentPhoto={this.state.currentPhoto}
                 handleTabClick={this.handleTabClick}
@@ -153,13 +164,17 @@ export class Index extends Component {
             />
           ): null}
           
-        <div className="container desktop">         
-          <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
-          {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
-        </div>
-        <div className="container mobile">
-          <Photos photos={this.state.photos} />
-        </div>
+        { this.state.windowWidth >= 1420 ? (
+          <div className="container desktop">         
+            <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
+            {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
+          </div>
+        ) : null }
+       { this.state.windowWidth <= 1420 ? (
+          <div className="container mobile">
+            <Photos photos={this.state.photos} />
+          </div>
+       ) : null }
         { this.state.showCookieNotification === true ? (
           <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
         ) : null }
