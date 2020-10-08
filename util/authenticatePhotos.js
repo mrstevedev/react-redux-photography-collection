@@ -3,6 +3,6 @@ module.exports = function authenticatePhotos(req, res, next) {
        // custom header exists, then call next() to pass to the next function
        next();
     } else {
-      res.sendStatus(403);
+      res.sendStatus(401);
     }
   }
