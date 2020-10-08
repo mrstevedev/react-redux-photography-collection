@@ -8,6 +8,7 @@ import CookiesNotification from './CookiesNotification';
 import { store } from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+// import photos from "../../api/photos.json";
 import axios from 'axios';
 import { session } from "passport";
 import Photos from "./Photos";
@@ -49,9 +50,8 @@ export class Index extends Component {
     }).catch(err => console.log(err))
    
 
-    if (document.cookie.split(';').some((item) => item.includes('spp_notification_accept=true'))) {
-      console.log('The cookie "spp_notification_accept" has "true" for value')
-    } else {
+    if (!document.cookie.split(';').some((item) => item.includes('spp_notification_accept=true'))) {
+      // console.log('The cookie "spp_notification_accept" has "true" for value')
       setTimeout(() => {
         this.setState({ showCookieNotification: true });
       }, 5000);
@@ -148,6 +148,7 @@ export class Index extends Component {
                 currentPhoto={this.state.currentPhoto}
                 handleTabClick={this.handleTabClick}
                 handleClose={this.handleClose}
+                title={this.state.title}
                 showSideBarRight={this.state.showSideBarRight}   
             />
           ): null}
