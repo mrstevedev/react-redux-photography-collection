@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import CameraInfo from "./CameraInfo";
+import LazyLoad from 'react-lazyload';
 
 const Photos = (props) => {
   //   const cameraInfo = JSON.parse(localStorage.getItem('cameraInfoContent'));
@@ -24,7 +25,9 @@ const Photos = (props) => {
             </div>
             <div className="overlay"><i className="fas fa-info-circle"></i></div>
                  */}
+                <LazyLoad height={320}>
                  <img src={ photo.imagePath } />
+                </LazyLoad>
         </section>
       ))}
     </Fragment>
