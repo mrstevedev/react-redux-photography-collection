@@ -6,8 +6,7 @@ const getAPI = (req, res, next) => {
   Photo.find()
     .then((photos) => {
       res.status(200).json(photos);
-    })
-    .catch((err) => console.log(err));
+    }).catch((err) => res.status(400).json({ error: err }));
 };
 
 module.exports.getAPI = getAPI;
