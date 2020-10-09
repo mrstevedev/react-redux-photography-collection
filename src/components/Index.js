@@ -171,7 +171,9 @@ export class Index extends Component {
         { this.state.showCookieNotification === true ? (
           <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
         ) : null }
-       <BackToTop />
+        { this.state.windowWidth <= 1420 ? (
+          <BackToTop />
+        ) : null }
       </Fragment>
     );
   }
