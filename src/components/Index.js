@@ -150,7 +150,6 @@ export class Index extends Component {
               active={this.state.active} 
               handleSideBarClick={this.handleSideBarClick} 
               handlePhotoDownload={this.handlePhotoDownload}
-              handleClick={this.handleClick} 
             />
           ) : null }
           
