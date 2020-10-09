@@ -4,9 +4,9 @@ import reducer from "../reducers";
 
 // Create the initial state
 const initialState = {
-    imageName: "bonitaskies.jpg",
-    imagePath: './img/bonitaskies.jpg'
-}
+  imageName: "bonitaskies.jpg",
+  imagePath: "./img/bonitaskies.jpg",
+};
 // const initialState = {
 //   photos: [
 //     {
@@ -24,4 +24,8 @@ const initialState = {
 //   ]
 // };
 
-export const store = createStore(reducer, initialState);
+export const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
