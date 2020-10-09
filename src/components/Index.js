@@ -87,7 +87,7 @@ export class Index extends Component {
     }
 
   handleSideBarClick = (e, id, val) => {
-    const activeState = localStorage.setItem('active', val);
+    localStorage.setItem('active', val);
     const activeNode = document.querySelector('.active');
     const getActiveState = localStorage.getItem('active');
     if(id) {
