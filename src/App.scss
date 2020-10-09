@@ -530,11 +530,12 @@ section.vert footer {
     section {
       position: relative;
       text-align: center;
+      margin: 0 1rem;
     }
-    img { padding: 0 1rem; margin: 6rem 0 -5rem 0 !important; }
+    img { margin: 2rem 0 0rem 0; box-shadow: 0px 8px 18px #b9b9b9; }
     section:first-child {
       img {
-        margin: 4rem 0 0 0;
+        margin: 6rem 0 0 0;
       }
     }
   }
@@ -601,13 +602,14 @@ section.vert footer {
 }
   .cookies__notification {
     right: 0 !important;
-    width: 100% !important;
-    margin: 0rem;
+    width: 91% !important;
+    margin: 0rem auto;
     position: fixed !important;
-    bottom: 0rem !important;
-    padding: 3rem;
-    border-radius: 0px !important;
+    bottom: 1rem !important;
+    padding: 2rem !important;
+    border-radius: 4px !important;
     z-index: 3 !important;
+    left: 0;
 
     .cookies__notification-acceptBtn,
     .cookies__notification-moreBtn {
