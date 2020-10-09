@@ -25,7 +25,7 @@ const Photos = (props) => {
             </div>
             <div className="overlay"><i className="fas fa-info-circle"></i></div>
                  */}
-                <LazyLoad height={320}>
+                <LazyLoad height={250}>
                  <img src={ photo.imagePath } />
                 </LazyLoad>
         </section>
