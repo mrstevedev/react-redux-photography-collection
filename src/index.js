@@ -1,19 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './App.scss';
-import {store} from './store';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./App.scss";
+import { store } from "./store";
 
-
-import { BrowserRouter } from 'react-router-dom';
-
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
 const render = () => {
-    ReactDOM.render(
-    <BrowserRouter>
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter>
         <App />
-    </BrowserRouter>
-    , document.getElementById('app'));
-}
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById("app")
+  );
+};
 render();
 store.subscribe(render);
