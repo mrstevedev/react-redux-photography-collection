@@ -120,11 +120,6 @@ export class Index extends Component {
     });
   }
 
-
-  handleTabClick = e => {
-    // console.log('handle tab click');
-  }
-
   handleCloseCookieModal = (e) => {
     // console.log('Close cookie notification modal');
     this.setState({ showCookieNotification: false }, () => {
@@ -156,7 +151,6 @@ export class Index extends Component {
             {this.state.windowWidth >= 1420 ? (
               <SideBarRight
                 currentPhoto={this.state.currentPhoto}
-                handleTabClick={this.handleTabClick}
                 handleClose={this.handleClose}
                 title={this.state.title}
                 showSideBarRight={this.state.showSideBarRight}   
