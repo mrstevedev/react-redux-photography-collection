@@ -7,7 +7,7 @@ const Sidebar = (props) => {
   // console.log("props in sidebar::::", props);
   return (
     <Fragment>
-      <aside className="vertical" data-aos="fade-right">
+      <aside className="vertical" data-aos="fade-right" data-aos-delay="800">
         <ul className="photo-list">
           <h4 className="photo-list-header">Photo Collection</h4>
           {arr.map((photo) => (
