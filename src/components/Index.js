@@ -120,6 +120,12 @@ export class Index extends Component {
     });
   }
 
+  handleCloseInfoOverlay = (e) => {
+    e.preventDefault();
+    
+    e.target.parentNode.parentNode.parentNode.classList.remove('show')
+  }
+
   handleCloseCookieModal = (e) => {
     // console.log('Close cookie notification modal');
     this.setState({ showCookieNotification: false }, () => {
@@ -127,6 +133,16 @@ export class Index extends Component {
       // https://www.npmjs.com/package/react-cookie
       document.cookie="spp_notification_accept=true;";
     });
+  }
+
+  handleTouchStart = (e) => {
+    e.target.parentNode.previousSibling.classList.add('show')
+  }
+
+  componentWillUnmount() {
+    this.setState = (state,callback) => {
+      return;
+    };
   }
 
   componentDidCatch() {
@@ -165,7 +181,10 @@ export class Index extends Component {
         ) : null }
        { this.state.windowWidth <= 1420 ? (
           <div className="container mobile">
-            <Photos photos={this.state.photos} />
+            <div className="mobile__info-legend" style={{ padding: '6rem 0 0 1.3rem' }}>
+              <h4 style={{ fontWeight: '100', fontSize: '0.72rem' }}>Touch photo for details</h4>
+            </div>
+            <Photos handleCloseInfoOverlay={this.handleCloseInfoOverlay} handleTouchStart={this.handleTouchStart} photos={this.state.photos} />
           </div>
        ) : null }
         { this.state.showCookieNotification === true ? (
