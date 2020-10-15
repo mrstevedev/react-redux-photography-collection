@@ -8,10 +8,10 @@ const Photos = (props) => {
   return (
     <Fragment>
       {arr.map((photo) => (
-        <section key={ photo.id } data-aos="fade" data-aos-delay="30">
-            {/* <div className="overlay__info">
+        <section key={ photo.id } data-aos="fade" data-aos-delay="300">
+            <div className="overlay__info">
                 <div className="overlay__info--close">
-                    <a href="#"><i className="fas fa-times"></i></a>
+                    <a href="#" onClick={props.handleCloseInfoOverlay}><i className="fas fa-times"></i></a>
                 </div>
                 <h4>Camera Info</h4>
                 <div className="overlay__row">
@@ -23,10 +23,9 @@ const Photos = (props) => {
                     <p>{ photo.location }</p>
                 </div>           
             </div>
-            <div className="overlay"><i className="fas fa-info-circle"></i></div>
-                 */}
+                
                 <LazyLoad height={250}>
-                 <img src={ photo.imagePath } />
+                 <img src={ photo.imagePath } onClick={props.handleTouchStart} />
                 </LazyLoad>
         </section>
       ))}
