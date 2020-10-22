@@ -15,6 +15,10 @@ class Admin extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const { REACT_APP_ADMIN_URL } = process.env;
+    }
+
     handleChange = (e) => {
         if(this.state.username !== '') {
             this.setState({ errorUsername: false });
@@ -27,6 +31,9 @@ class Admin extends React.Component {
 
     handleSignIn = (e) => {
         e.preventDefault();
+
+        const { REACT_APP_ADMIN_URL } = process.env;
+
 
         if (this.state.username === '') {
             this.setState({ errorUsername: true });
@@ -43,7 +50,7 @@ class Admin extends React.Component {
                 password: this.state.password
             },
             withCredentials: true,
-            url: 'http://localhost:4000/signin'
+            url: `${ REACT_APP_ADMIN_URL }/signin`
         }).then(res => {
             console.log(res)
             if(res.data.message) {
