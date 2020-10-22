@@ -4,13 +4,13 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const creds = require('./config');
 const api = require('./routes/routes');
+const admin = require('./routes/admin');
 const dotenv = require('dotenv');
 const path = require('path');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const multer = require('multer');
 
@@ -44,6 +44,7 @@ app.use(cors({
 app.use(express.json())
 app.use('/', router)
 app.use('/api', api)
+app.use('/admin', admin)
 
 // router.use('/api/photo', authenticateGetPhotos, (req, res) => {
 //   res.status(200).json(api)
@@ -59,27 +60,6 @@ router.post('/api/user', authenticateToken, (req, res) => {
   }).then(response => res.json({ message: 'successfully updated', email, location, avatarIcon }) )
   .catch(err => console.log(err));
 });
-
-router.post('/signin', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if(err) throw err;
-    if(!user) res.json({ message: 'Username and or password incorrect' , user: null })
-    else {
-      req.logIn(user, err => {
-        if(err) throw err;
-        jwt.sign({ user }, 'secret', { expiresIn: '1h' }, (err, token) => {
-          res.status(200)
-            .json({ 
-              message: 'Successfully Authenticated',
-              user: req.user,
-              jwt: token
-          })
-        })
-      })
-    }
-  })(req, res, next)
-})
-
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
