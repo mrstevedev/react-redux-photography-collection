@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react'
 import Header from './Header';
 import { Link } from "react-router-dom";
+import AOS from "aos";
 
 const About = (props) => {
+    AOS.init();
+
     const handleLink = () => {
         props.history.push("/");    
     }
@@ -16,7 +19,7 @@ const About = (props) => {
                     <div className="separator"></div>
                     <footer></footer>
                 </section>
-                <section className="about"> 
+                <section className="about" data-aos="fade-in" data-aos-delay="700"> 
                        
                 <p className="about-text">
                     Personal showcase of photos I have taken over the years. Some of the photos were taken with a smartphone that I had that was branded and sold at a 
