@@ -48,7 +48,7 @@ export default class DashboardMain extends Component {
               position: "relative",
             }}
           >
-            <div
+            {/* <div
               className="admin__page-header-avatar"
               style={{
                 position: "absolute",
@@ -63,7 +63,7 @@ export default class DashboardMain extends Component {
                 margin: "0 auto",
                 bottom: "-3rem",
               }}
-            ></div>
+            ></div> */}
           </div>
         </div>
       </div>
