@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Header from './Header';
-import Sidebar from '../containers/Sidebar';
+import Sidebar from './Sidebar';
 import BackToTop from './BackToTop';
 import AOS from "aos";
 import SideBarRight from "./SideBarRight";
