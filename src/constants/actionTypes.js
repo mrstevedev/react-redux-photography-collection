@@ -1,1 +1,2 @@
+export const LOAD_PHOTOS_SUCCESS = 'LOAD_PHOTOS_SUCCESS';
 export const SET_PHOTO = 'SET_PHOTO';
