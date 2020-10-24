@@ -1,12 +1,13 @@
-export default (state, action) => {
-  console.log(state, action);
+import * as types from "../constants/actionTypes";
+
+export default function fetchReducer(state = { photos: "" }, action) {
   switch (action.type) {
-      case "SET_PHOTO": 
-        return {
-          ...state,
-          photo: action.photo
-        }
-      default:
-          return state;
+    case types.LOAD_PHOTOS_SUCCESS:
+      return { 
+        ...state, 
+        photos: action.payload
+    };
+    default:
+      return state;
   }
 };
