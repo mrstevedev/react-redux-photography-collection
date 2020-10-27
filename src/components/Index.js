@@ -156,11 +156,7 @@ export class Index extends Component {
       return;
     };
   }
-
-  componentDidCatch() {
-    // console.log("//-----------ComponentDidCatch Ran");
-  }
-
+  
   render() {
     return (
       <Fragment>
