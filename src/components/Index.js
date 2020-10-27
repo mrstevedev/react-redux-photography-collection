@@ -174,7 +174,7 @@ export class Index extends Component {
           
         { this.state.windowWidth >= 1420 ? (
           <div className="container desktop">         
-            <Photo />
+            <Photo handleRightSideBarClick={this.handleRightSideBarClick} />
           </div>
         ) : null }
        { this.state.windowWidth <= 1420 ? (
