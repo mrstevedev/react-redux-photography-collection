@@ -1,2 +1,3 @@
 export const LOAD_PHOTOS_SUCCESS = 'LOAD_PHOTOS_SUCCESS';
 export const SET_PHOTO = 'SET_PHOTO';
+export const TOGGLE_PHOTO_INFO = 'TOGGLE_PHOTO_INFO';
