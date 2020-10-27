@@ -9,7 +9,6 @@ import store from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // import photos from "../../api/photos.json";
-import axios from 'axios';
 import { session } from "passport";
 import Photos from "./Photos";
 import { fetchPhotos } from '../actions';
