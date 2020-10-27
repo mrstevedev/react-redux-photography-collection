@@ -1,13 +1,9 @@
-import * as types from "../constants/actionTypes";
+import fetchReducer from './fetch';
+import setReducer from './set';
+import { combineReducers } from 'redux';
 
-export default function fetchReducer(state = { photos: "" }, action) {
-  switch (action.type) {
-    case types.LOAD_PHOTOS_SUCCESS:
-      return { 
-        ...state, 
-        photos: action.payload
-    };
-    default:
-      return state;
-  }
-};
+const allReducers = combineReducers({
+  photos: fetchReducer,
+  currentPhoto: setReducer
+});
+export default allReducers;
