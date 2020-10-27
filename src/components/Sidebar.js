@@ -1,23 +1,24 @@
-import React, { useState, Fragment } from "react";
-import { store } from "../store";
-import { setPhoto } from "../actions";
+import React, { Fragment } from "react";
+import { setPhoto } from '../actions/index';
+import { useSelector, useDispatch } from "react-redux";
 
 const Sidebar = (props) => {
-  let arr = Array.from(props.photos);
-  // console.log("props in sidebar::::", props);
+  const photos = useSelector((state) => Array.from(state.photos.photos));
+  const activeState = useSelector((state) => state.currentPhoto.currentPhoto.href);
+  const dispatch = useDispatch();
   return (
     <Fragment>
       <aside className="vertical" data-aos="fade-right" data-aos-delay="800">
         <ul className="photo-list">
           <h4 className="photo-list-header">Photo Collection</h4>
-          {arr.map((photo) => (
+          {photos.map((photo) => (
             <a
               key={photo.id}
               className="nav-link"
               href={`#${photo.href}`}
-              onClick={(e) => props.handleSideBarClick(e, photo.id, photo.href)}
+              onClick={(e) => dispatch(setPhoto(e, photo.id, photo.href))}
             >
-              <li className={props.active === photo.href ? "active" : ""}>
+              <li className={activeState === photo.href ? "active" : localStorage.getItem('active') === photo.href ? 'active' : ''}>
                 {photo.title}
               </li>
             </a>
