@@ -5,13 +5,14 @@ import BackToTop from './BackToTop';
 import AOS from "aos";
 import SideBarRight from "./SideBarRight";
 import CookiesNotification from './CookiesNotification';
-import { store } from '../store';
+import store from '../store';
 import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // import photos from "../../api/photos.json";
 import axios from 'axios';
 import { session } from "passport";
 import Photos from "./Photos";
+import { fetchPhotos } from '../actions';
 
 export class Index extends Component {
   constructor(props) {
@@ -27,31 +28,43 @@ export class Index extends Component {
     }
   }
   componentDidMount() {
+    store.dispatch(fetchPhotos());
+    store.subscribe(() => {
+      // console.log(store.getState().photos.photos);
+      const { photos } = store.getState().photos;
+      this.setState({ photos: photos });
+      const activeState = localStorage.getItem('active');
+      this.setState({ active: activeState });
+      const listItem = document.querySelector(".photo-list li");
+      if(localStorage.getItem('active') === null ){
+            listItem.classList.add("active");
+      }
+    });
     this.handleResize();
     window.addEventListener('resize', this.handleResize)
 
-    const { REACT_APP_API_URL } = process.env;
+    // const { REACT_APP_API_URL } = process.env;
     // console.log("//-----------ComponentDidMount Ran");
     AOS.init();
     // console.log('AOS Init');
     // console.log('call store.getState(): ', store.getState().photos);
-    axios.get( `${ REACT_APP_API_URL }/photos`, {
-      headers: {
-        'requestapi': "123",
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(data => {
-        this.setState({ photos: data.data })
-        const activeState = localStorage.getItem('active');
-        this.setState({ active: activeState });
-        const listItem = document.querySelector(".photo-list li");
+    // axios.get( `${ REACT_APP_API_URL }/photos`, {
+    //   headers: {
+    //     'requestapi': "123",
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then(data => {
+    //     this.setState({ photos: data.data })
+    //     const activeState = localStorage.getItem('active');
+    //     this.setState({ active: activeState });
+    //     const listItem = document.querySelector(".photo-list li");
     
-        if(localStorage.getItem('active') === null ){
-          listItem.classList.add("active");
-        }
-    }).catch(err => console.log(err))
+    //     if(localStorage.getItem('active') === null ){
+    //       listItem.classList.add("active");
+    //     }
+    // }).catch(err => console.log(err))
    
 
     if (!document.cookie.split(';').some((item) => item.includes('spp_notification_accept=true'))) {
@@ -86,31 +99,31 @@ export class Index extends Component {
       }); 
     }
 
-  handleSideBarClick = (e, id, val) => {
-    localStorage.setItem('active', val);
-    const activeNode = document.querySelector('.active');
-    const getActiveState = localStorage.getItem('active');
-    if(id) {
-      const currPhoto = this.state.photos.find((photo) => photo.id === id)
-      this.setState({ currentPhoto: currPhoto }, () => {
-        cameraInfoContent: 
-        localStorage.setItem('cameraInfoContent', 
-        JSON.stringify({
-          title: currPhoto.title,
-          location: currPhoto.location,
-          camera: currPhoto.camera,
-          imagePath: currPhoto.imagePath
-        }))
-      })
-    }
-    this.setState({ active: getActiveState });
-    // console.log('id: ', id)
-    if(activeNode){
-      activeNode.classList.remove('active');
-    }
-    e.currentTarget.querySelector('.nav-link li').classList.add('active');
-    // store.dispatch(setInfo(val))
-  }
+  // handleSideBarClick = (e, id, val) => {
+  //   localStorage.setItem('active', val);
+  //   const activeNode = document.querySelector('.active');
+  //   const getActiveState = localStorage.getItem('active');
+  //   if(id) {
+  //     const currPhoto = this.state.photos.find((photo) => photo.id === id)
+  //     this.setState({ currentPhoto: currPhoto }, () => {
+  //       cameraInfoContent: 
+  //       localStorage.setItem('cameraInfoContent', 
+  //       JSON.stringify({
+  //         title: currPhoto.title,
+  //         location: currPhoto.location,
+  //         camera: currPhoto.camera,
+  //         imagePath: currPhoto.imagePath
+  //       }))
+  //     })
+  //   }
+  //   this.setState({ active: getActiveState });
+  //   // console.log('id: ', id)
+  //   if(activeNode){
+  //     activeNode.classList.remove('active');
+  //   }
+  //   e.currentTarget.querySelector('.nav-link li').classList.add('active');
+  //   // store.dispatch(setInfo(val))
+  // }
 
   handleClose = e => {
     // console.log('handleClose Ran');
