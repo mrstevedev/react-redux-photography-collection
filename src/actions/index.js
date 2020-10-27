@@ -1,14 +1,28 @@
 import * as types from "../constants/actionTypes";
 import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
+import store from "../store";
 
-export function setPhoto(e, id, val) {
-  return {
-    type: SET_PHOTO,
-    id: id,
-    href: val,
-  };
-}
+export const setPhoto = (e, id, val) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_PHOTO,
+      id: id,
+      active: val,
+      photos: store.getState().photos.photos
+    })
+   
+    localStorage.setItem('active', val);
+    const currPhoto = store.getState().photos.photos.find((photo) => photo.id === id)
+      localStorage.setItem('cameraInfoContent', 
+      JSON.stringify({
+        title: currPhoto.title,
+        location: currPhoto.location,
+        camera: currPhoto.camera,
+        imagePath: currPhoto.imagePath
+      }))
+    }
+  }
 
 // Async action
 export const fetchPhotos = () => {
