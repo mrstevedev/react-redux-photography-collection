@@ -156,7 +156,7 @@ export class Index extends Component {
       return;
     };
   }
-  
+
   render() {
     return (
       <Fragment>
@@ -183,8 +183,7 @@ export class Index extends Component {
           
         { this.state.windowWidth >= 1420 ? (
           <div className="container desktop">         
-            <Photo handleRightSideBarClick={this.handleRightSideBarClick} currentPhoto={this.state.currentPhoto} />
-            {/* <Photo currentPhoto={currentPhoto} imageSrc={store.getState().imageName} imagePath={store.getState().imagePath} /> */}
+            <Photo />
           </div>
         ) : null }
        { this.state.windowWidth <= 1420 ? (
