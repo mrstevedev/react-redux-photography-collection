@@ -79,14 +79,6 @@ export class Index extends Component {
     windowWidth: window.innerWidth
   });
 
-  handlePhotoDownload = e => {
-    // console.log(e);
-  }
-
-  handleInputSelect = (e) => {
-    // console.log(e)
-  }
-
   handleRightSideBarClick = (e, curr, val) => {
     e.preventDefault();
    
