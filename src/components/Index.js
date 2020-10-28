@@ -78,16 +78,15 @@ export class Index extends Component {
     windowWidth: window.innerWidth
   });
 
-  handleRightSideBarClick = (e, curr, val) => {
-    e.preventDefault();
+  // handleRightSideBarClick = (e, val) => {
+  //   e.preventDefault();
    
-    this.setState({
-      showSideBarRight: true,
-      title: val
-    }, () => {
-      localStorage.setItem('sidebarRight', this.state.title );
-      }); 
-    }
+  //   this.setState({
+  //     showSideBarRight: true,
+  //     title: val
+  //   }); 
+  //     localStorage.setItem('sidebarRight', this.state.title );
+  //   }
 
   // handleSideBarClick = (e, id, val) => {
   //   localStorage.setItem('active', val);
