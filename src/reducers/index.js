@@ -1,11 +1,11 @@
 import fetchReducer from './fetch';
 import setReducer from './set';
 import { combineReducers } from 'redux';
-import toggleReducer from './toggle';
+import sidebarReducer from './sidebar';
 
 const allReducers = combineReducers({
   photos: fetchReducer,
   currentPhoto: setReducer,
-  toggle: toggleReducer
+  showSidebar: sidebarReducer
 });
 export default allReducers;
