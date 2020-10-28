@@ -1,3 +1,4 @@
 export const LOAD_PHOTOS_SUCCESS = 'LOAD_PHOTOS_SUCCESS';
 export const SET_PHOTO = 'SET_PHOTO';
 export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
