@@ -3,6 +3,15 @@ import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 import store from "../store";
 
+export const showSidebar = (e, val) => {
+ return (dispatch) => {
+   dispatch({
+    type: types.SHOW_SIDEBAR,
+   })
+   localStorage.setItem('sidebarRight', val);
+ }
+}
+
 export const setPhoto = (e, id, val) => {
   return (dispatch) => {
     dispatch({
