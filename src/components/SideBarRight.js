@@ -1,10 +1,14 @@
 import React from "react";
 import store from '../store';
+import { useSelector } from 'react-redux';
 
 const SideBarRight = (props) => {
+  const sideBarState = useSelector((state) => state.showSidebar);
+  console.log('sidebarState', sideBarState);
   const cameraInfo = JSON.parse(localStorage.getItem('cameraInfoContent'));
     return (
-      <aside className={`vertical right ` + (props.showSideBarRight === true ? 'show' : '' || localStorage.getItem('sidebarRight') !== null ? 'show' : '')}>
+      <aside className={`vertical right ` + (sideBarState === true ? 'show' : '' || localStorage.getItem('sidebarRight') !== null ? 'show' : '' )}>
+      {/* <aside className={`vertical right ` + (props.showSideBarRight === true ? 'show' : '' || localStorage.getItem('sidebarRight') !== null ? 'show' : '')}> */}
         <div className="camera-info-close"><i className="fas fa-times" onClick={props.handleClose}></i></div>
         <div className="camera-info">
           <div className="camera-info-header">
