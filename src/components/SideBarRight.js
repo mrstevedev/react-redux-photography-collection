@@ -8,8 +8,6 @@ const SideBarRight = (props) => {
   const dispatch = useDispatch();
     return (
       <aside className={`vertical right ` + (sideBarState === true ? 'show' : '' || localStorage.getItem('sidebarRight') !== null ? 'show' : '' )}>
-      {/* <aside className={`vertical right ` + (props.showSideBarRight === true ? 'show' : '' || localStorage.getItem('sidebarRight') !== null ? 'show' : '')}> */}
-        {/* <div className="camera-info-close"><i className="fas fa-times" onClick={props.handleClose}></i></div> */}
         <div className="camera-info-close"><i className="fas fa-times" onClick={() => dispatch(hideSidebar())}></i></div>
         <div className="camera-info">
           <div className="camera-info-header">
