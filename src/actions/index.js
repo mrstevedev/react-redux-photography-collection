@@ -3,7 +3,7 @@ import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 import store from "../store";
 
-export const hideSidebar = (e, val) => {
+export const hideSidebar = () => {
   return (dispatch) => {
     dispatch({
       type: types.HIDE_SIDEBAR
