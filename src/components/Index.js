@@ -114,13 +114,13 @@ export class Index extends Component {
   //   // store.dispatch(setInfo(val))
   // }
 
-  handleClose = e => {
-    // console.log('handleClose Ran');
-    localStorage.removeItem('sidebarRight');
-    this.setState({
-      showSideBarRight: false
-    });
-  }
+  // handleClose = e => {
+  //   // console.log('handleClose Ran');
+  //   localStorage.removeItem('sidebarRight');
+  //   this.setState({
+  //     showSideBarRight: false
+  //   });
+  // }
 
   handleCloseInfoOverlay = (e) => {
     e.preventDefault();
