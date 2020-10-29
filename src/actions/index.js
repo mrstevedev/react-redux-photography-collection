@@ -3,6 +3,14 @@ import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 import store from "../store";
 
+export const showNotification = () => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SHOW_NOTIFICATION
+    })
+  }
+}
+
 export const closeNotification = () => {
   return (dispatch) => {
     dispatch({
