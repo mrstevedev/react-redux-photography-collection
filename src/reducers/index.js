@@ -8,6 +8,6 @@ const allReducers = combineReducers({
   photos: fetchReducer,
   currentPhoto: setReducer,
   showSidebar: sidebarReducer,
-  hideNotification: notificationReducer
+  cookieNotification: notificationReducer
 });
 export default allReducers;
