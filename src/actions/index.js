@@ -3,6 +3,15 @@ import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 import store from "../store";
 
+export const closeNotification = () => {
+  return (dispatch) => {
+    dispatch({
+      type: types.CLOSE_NOTIFICATION
+    });
+    document.cookie="spp_notification_accept=true;";
+  }
+}
+
 export const hideSidebar = () => {
   return (dispatch) => {
     dispatch({
