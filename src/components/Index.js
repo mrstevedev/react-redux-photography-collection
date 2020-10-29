@@ -10,7 +10,7 @@ import Photo from './Photo';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { session } from "passport";
 import Photos from "./Photos";
-import { fetchPhotos } from '../actions';
+import { fetchPhotos, showNotification } from '../actions';
 
 export class Index extends Component {
   constructor(props) {
@@ -68,7 +68,8 @@ export class Index extends Component {
     if (!document.cookie.split(';').some((item) => item.includes('spp_notification_accept=true'))) {
       // console.log('The cookie "spp_notification_accept" has "true" for value')
       setTimeout(() => {
-        this.setState({ showCookieNotification: true });
+        // this.setState({ showCookieNotification: true });
+        store.dispatch(showNotification())
       }, 5000);
     }
   }
@@ -184,9 +185,9 @@ export class Index extends Component {
             <Photos handleCloseInfoOverlay={this.handleCloseInfoOverlay} handleTouchStart={this.handleTouchStart} photos={this.state.photos} />
           </div>
        ) : null }
-        { this.state.showCookieNotification === true ? (
-          <CookiesNotification handleCloseCookieModal={this.handleCloseCookieModal} />
-        ) : null }
+       { store.getState().cookieNotification === 'show' ? (
+         <CookiesNotification />
+       ) : '' }          
         { this.state.windowWidth <= 1420 ? (
           <BackToTop />
         ) : null }
