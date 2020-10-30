@@ -13,6 +13,7 @@ const connectDB = require('./config/db');
 const passport = require('passport');
 const User = require('./models/User');
 const multer = require('multer');
+const session = require('express-session');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -40,6 +41,12 @@ app.use(helmet());
 app.use(cors({
   origin: 'http://localhost:9000',
   credentials: true
+}))
+
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
 }))
 app.use(express.json())
 app.use('/', router)
