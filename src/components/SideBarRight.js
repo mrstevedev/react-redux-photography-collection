@@ -81,7 +81,7 @@ const SideBarRight = (props) => {
                     style={{ color: "#a9a9ff" }}
                     href={
                       sideBarState.imagePath
-                        ? props.currentPhoto.imagePath
+                        ? sideBarState.imagePath
                         : JSON.parse(
                             localStorage.getItem("cameraInfoContent")
                           ) !== null
